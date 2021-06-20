@@ -1,6 +1,38 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "shared-types-rocket": {
+      "root": "libs/shared/types/rocket",
+      "sourceRoot": "libs/shared/types/rocket/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/types/rocket",
+            "main": "libs/shared/types/rocket/src/index.ts",
+            "tsConfig": "libs/shared/types/rocket/tsconfig.lib.json",
+            "assets": ["libs/shared/types/rocket/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/types/rocket/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/types/rocket"],
+          "options": {
+            "jestConfig": "libs/shared/types/rocket/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }
