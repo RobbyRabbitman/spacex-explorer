@@ -22,6 +22,9 @@
     "shared-types-common": {
       "tags": ["scope:shared", "type:types"]
     },
+    "shared-types-launch": {
+      "tags": ["scope:shared", "type:types"]
+    },
     "shared-types-rocket": {
       "tags": ["scope:shared", "type:types"]
     }

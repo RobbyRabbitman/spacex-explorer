@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@spacex/shared/types/common": ["libs/shared/types/common/src/index.ts"],
+      "@spacex/shared/types/launch": ["libs/shared/types/launch/src/index.ts"],
       "@spacex/shared/types/rocket": ["libs/shared/types/rocket/src/index.ts"]
     }
   },

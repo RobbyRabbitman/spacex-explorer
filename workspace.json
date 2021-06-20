@@ -32,6 +32,37 @@
         }
       }
     },
+    "shared-types-launch": {
+      "root": "libs/shared/types/launch",
+      "sourceRoot": "libs/shared/types/launch/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/types/launch",
+            "main": "libs/shared/types/launch/src/index.ts",
+            "tsConfig": "libs/shared/types/launch/tsconfig.lib.json",
+            "assets": ["libs/shared/types/launch/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/types/launch/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/types/launch"],
+          "options": {
+            "jestConfig": "libs/shared/types/launch/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-types-rocket": {
       "root": "libs/shared/types/rocket",
       "sourceRoot": "libs/shared/types/rocket/src",
