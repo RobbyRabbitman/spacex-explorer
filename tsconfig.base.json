@@ -30,5 +30,10 @@
       "@spacex/shared/util/util-ts": ["libs/shared/util/util-ts/src/index.ts"]
     }
   },
+  "angularCompilerOptions": { 
+    "strictInjectionParameters": true,
+    "strictTemplates": true,
+    "strictInputAccessModifiers":true
+  },
   "exclude": ["node_modules", "tmp"]
 }
