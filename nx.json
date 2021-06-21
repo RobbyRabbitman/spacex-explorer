@@ -19,6 +19,15 @@
     }
   },
   "projects": {
+    "launch-data-data-launch": {
+      "tags": ["scope:shared", "type:data"]
+    },
+    "rocket-data-data-rocket": {
+      "tags": ["scope:shared", "type:data"]
+    },
+    "shared-data-data-common": {
+      "tags": ["scope:shared", "type:data"]
+    },
     "shared-types-common": {
       "tags": ["scope:shared", "type:types"]
     },
@@ -27,6 +36,9 @@
     },
     "shared-types-rocket": {
       "tags": ["scope:shared", "type:types"]
+    },
+    "shared-util-util-ts": {
+      "tags": ["scope:shared", "type:util"]
     }
   }
 }

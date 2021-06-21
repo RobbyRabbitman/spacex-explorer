@@ -15,9 +15,19 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@spacex/launch/data/data-launch": [
+        "libs/launch/data/data-launch/src/index.ts"
+      ],
+      "@spacex/rocket/data/data-rocket": [
+        "libs/rocket/data/data-rocket/src/index.ts"
+      ],
+      "@spacex/shared/data/data-common": [
+        "libs/shared/data/data-common/src/index.ts"
+      ],
       "@spacex/shared/types/common": ["libs/shared/types/common/src/index.ts"],
       "@spacex/shared/types/launch": ["libs/shared/types/launch/src/index.ts"],
-      "@spacex/shared/types/rocket": ["libs/shared/types/rocket/src/index.ts"]
+      "@spacex/shared/types/rocket": ["libs/shared/types/rocket/src/index.ts"],
+      "@spacex/shared/util/util-ts": ["libs/shared/util/util-ts/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

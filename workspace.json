@@ -1,6 +1,119 @@
 {
   "version": 2,
   "projects": {
+    "launch-data-data-launch": {
+      "projectType": "library",
+      "root": "libs/launch/data/data-launch",
+      "sourceRoot": "libs/launch/data/data-launch/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/launch/data/data-launch"],
+          "options": {
+            "project": "libs/launch/data/data-launch/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/launch/data/data-launch/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/launch/data/data-launch/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/launch/data/data-launch"],
+          "options": {
+            "jestConfig": "libs/launch/data/data-launch/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/launch/data/data-launch/src/**/*.ts",
+              "libs/launch/data/data-launch/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "rocket-data-data-rocket": {
+      "projectType": "library",
+      "root": "libs/rocket/data/data-rocket",
+      "sourceRoot": "libs/rocket/data/data-rocket/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/rocket/data/data-rocket"],
+          "options": {
+            "project": "libs/rocket/data/data-rocket/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/rocket/data/data-rocket/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/rocket/data/data-rocket/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rocket/data/data-rocket"],
+          "options": {
+            "jestConfig": "libs/rocket/data/data-rocket/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/rocket/data/data-rocket/src/**/*.ts",
+              "libs/rocket/data/data-rocket/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-data-data-common": {
+      "root": "libs/shared/data/data-common",
+      "sourceRoot": "libs/shared/data/data-common/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/data/data-common",
+            "main": "libs/shared/data/data-common/src/index.ts",
+            "tsConfig": "libs/shared/data/data-common/tsconfig.lib.json",
+            "assets": ["libs/shared/data/data-common/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/data/data-common/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data/data-common"],
+          "options": {
+            "jestConfig": "libs/shared/data/data-common/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-types-common": {
       "root": "libs/shared/types/common",
       "sourceRoot": "libs/shared/types/common/src",
@@ -93,9 +206,51 @@
           }
         }
       }
+    },
+    "shared-util-util-ts": {
+      "root": "libs/shared/util/util-ts",
+      "sourceRoot": "libs/shared/util/util-ts/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/util/util-ts",
+            "main": "libs/shared/util/util-ts/src/index.ts",
+            "tsConfig": "libs/shared/util/util-ts/tsconfig.lib.json",
+            "assets": ["libs/shared/util/util-ts/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/util/util-ts/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/util/util-ts"],
+          "options": {
+            "jestConfig": "libs/shared/util/util-ts/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {}
   }
 }

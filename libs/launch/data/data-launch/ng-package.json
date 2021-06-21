@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../../dist/libs/launch/data/data-launch",
+  "lib": {
+    "entryFile": "src/index.ts"
+  }
+}
