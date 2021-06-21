@@ -7,5 +7,6 @@ module.exports = {
     '<rootDir>/libs/launch/data/data-launch',
     '<rootDir>/libs/shared/data/data-common',
     '<rootDir>/libs/shared/util/util-ts',
+    '<rootDir>/apps/web/launch-timeline',
   ],
 };
