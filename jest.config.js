@@ -8,5 +8,7 @@ module.exports = {
     '<rootDir>/libs/shared/data/data-common',
     '<rootDir>/libs/shared/util/util-ts',
     '<rootDir>/apps/web/launch-timeline',
+    '<rootDir>/libs/launch-timeline/features/lazy/launch-timeline',
+    '<rootDir>/libs/launch-timeline/ui/launch-overview-card',
   ],
 };

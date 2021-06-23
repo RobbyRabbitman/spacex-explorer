@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@spacex/launch-timeline/features/lazy/launch-timeline": [
+        "libs/launch-timeline/features/lazy/launch-timeline/src/index.ts"
+      ],
+      "@spacex/launch-timeline/ui/launch-overview-card": [
+        "libs/launch-timeline/ui/launch-overview-card/src/index.ts"
+      ],
       "@spacex/launch/data/data-launch": [
         "libs/launch/data/data-launch/src/index.ts"
       ],
@@ -30,10 +36,10 @@
       "@spacex/shared/util/util-ts": ["libs/shared/util/util-ts/src/index.ts"]
     }
   },
-  "angularCompilerOptions": { 
+  "angularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictTemplates": true,
-    "strictInputAccessModifiers":true
+    "strictInputAccessModifiers": true
   },
   "exclude": ["node_modules", "tmp"]
 }

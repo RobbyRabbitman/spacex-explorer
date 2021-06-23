@@ -13,7 +13,15 @@ import { SPACEX_API_BASE_URL } from '@spacex/shared/data/data-common';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot([
+      {
+        path: '',
+        loadChildren: () =>
+          import('@spacex/launch-timeline/features/lazy/launch-timeline').then(
+            (module) => module.LaunchTimelineModule
+          ),
+      },
+    ]),
     NgxsModule.forRoot([], {
       developmentMode: !environment.production,
     }),
