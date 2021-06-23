@@ -8,11 +8,13 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from '../environments/environment';
 import { DataLaunchModule } from '@spacex/launch/data/data-launch';
 import { SPACEX_API_BASE_URL } from '@spacex/shared/data/data-common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {
         path: '',
