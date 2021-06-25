@@ -1,4 +1,4 @@
-import { DatePrecision, UUID } from '@spacex/shared/types/common';
+import { DatePrecision, Entity, UUID } from '@spacex/shared/types/common';
 import { LaunchCore } from './LaunchCore';
 import { LaunchFailure } from './LaunchFailure';
 import { LaunchFairing } from './LaunchFairing';
@@ -7,7 +7,7 @@ import { LaunchLinks } from './LaunchLinks';
 /**
  * https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/launches/schema.md
  */
-export interface Launch {
+export interface Launch extends Entity {
   flight_number: number;
   name: string;
   date_utc: string;

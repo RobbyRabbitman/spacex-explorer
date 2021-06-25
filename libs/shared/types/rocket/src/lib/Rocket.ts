@@ -1,4 +1,4 @@
-import { Length, Mass } from '@spacex/shared/types/common';
+import { Entity, Length, Mass } from '@spacex/shared/types/common';
 import { RocketEngine } from './RocketEngine';
 import { RocketLandingLegs } from './RocketLandingLegs';
 import { RocketPayloadWeight } from './RocketPayloadWeight';
@@ -7,7 +7,7 @@ import { RocketStage } from './RocketStage';
 /**
  * https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/rockets/schema.md
  */
-export interface Rocket {
+export interface Rocket extends Entity {
   height: Length;
   diameter: Length;
   mass: Mass;
@@ -29,5 +29,4 @@ export interface Rocket {
   company: string;
   wikipedia: string;
   description: string;
-  id: string;
 }

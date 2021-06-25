@@ -1,23 +1,24 @@
 import { Observable } from 'rxjs';
 import { Endpoint } from './Endpoint';
 import { HttpClient } from '@angular/common/http';
+import { UUID } from '@spacex/shared/types/common';
 /**
  *  common resources pattern: GET /<route>, GET /<route>/:id, POST /<route>/query
  */
-export abstract class SpacexResource<Resource> extends Endpoint {
+export abstract class SpacexResource<Entity> extends Endpoint {
   constructor(
     baseUrl: string,
     route: string,
-    private readonly http: HttpClient
+    protected readonly http: HttpClient
   ) {
     super(baseUrl, route);
   }
 
-  public fetchAll(): Observable<Array<Resource>> {
-    return this.http.get<Array<Resource>>(this.endpoint);
+  public fetchEntities(): Observable<Array<Entity>> {
+    return this.http.get<Array<Entity>>(this.endpoint);
   }
 
-  public fetchOne(id: string): Observable<Resource> {
-    return this.http.get<Resource>(`${this.endpoint}/${id}`);
+  public fetch(id: UUID): Observable<Entity> {
+    return this.http.get<Entity>(`${this.endpoint}/${id}`);
   }
 }

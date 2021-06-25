@@ -1,8 +1,14 @@
 <launch-timeline-ui-launch-overview-card
   [launch]="launch"
-  *ngFor="let launch of launchState$ | async"
+  *ngFor="let launch of launches$ | async"
 >
   <launch-timeline-ui-launch-overview-card-actions>
-    <button>Details</button>
+    <button
+      (click)="navigateToLaunchDetail(launch)"
+      mat-raised-button
+      color="primary"
+    >
+      Details
+    </button>
   </launch-timeline-ui-launch-overview-card-actions>
 </launch-timeline-ui-launch-overview-card>

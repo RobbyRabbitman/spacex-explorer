@@ -1,8 +1,10 @@
-export class GetSingleRocket {
-  static readonly type = '[Rocket] Get Single Rocket';
-  constructor(public readonly id: string) {}
+import { UUID } from '@spacex/shared/types/common';
+
+export class GetRocket {
+  static readonly type = '[Rocket] Get Rocket';
+  constructor(public readonly id: UUID) {}
 }
 
-export class GetAllRockets {
-  static readonly type = '[Rocket] Get All Rockets';
+export class GetRockets {
+  static readonly type = '[Rocket] Get Rockets';
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { isNonNull } from '@spacex/shared/util/util-ts';
-import { GetAllRockets, GetSingleRocket } from './rockets.actions';
+import { GetRockets, GetRocket } from './rockets.actions';
 import { switchMapTo, tap } from 'rxjs/operators';
 import { EMPTY, Observable } from 'rxjs';
 import { Rocket } from '@spacex/shared/types/rocket';
@@ -14,7 +14,7 @@ export const rocket_state = 'rocket';
 export class RocketState {
   constructor(private readonly api: RocketApiService) {}
 
-  @Action(GetAllRockets)
+  @Action(GetRockets)
   public getAllRockets(ctx: StateContext<RocketStateModel>): Observable<never> {
     return this.api.fetchAll().pipe(
       tap((rockets) => ctx.setState(rockets)),
@@ -22,10 +22,10 @@ export class RocketState {
     );
   }
 
-  @Action(GetSingleRocket)
+  @Action(GetRocket)
   public getOneRocket(
     ctx: StateContext<RocketStateModel>,
-    { id }: GetSingleRocket
+    { id }: GetRocket
   ): Observable<never> {
     const state = ctx.getState();
     if (state?.find((rocket) => rocket.id === id) == null)
