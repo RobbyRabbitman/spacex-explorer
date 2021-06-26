@@ -43,6 +43,9 @@
     "shared-types-rocket": {
       "tags": ["scope:shared", "type:types"]
     },
+    "shared-util-util-data": {
+      "tags": ["scope:shared", "type:util"]
+    },
     "shared-util-util-ts": {
       "tags": ["scope:shared", "type:util"]
     },

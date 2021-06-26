@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/apps/web/launch-timeline',
     '<rootDir>/libs/launch-timeline/features/lazy/launch-timeline',
     '<rootDir>/libs/launch-timeline/ui/launch-overview-card',
+    '<rootDir>/libs/shared/util/util-data',
   ],
 };
