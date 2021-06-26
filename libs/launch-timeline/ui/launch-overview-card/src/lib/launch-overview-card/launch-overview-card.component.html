@@ -8,7 +8,7 @@
       {{ launch.date_utc | date }}
     </mat-card-subtitle>
   </mat-card-header>
-  <img [src]="launch.links.flickr.original[0]" mat-card-image />
+  <img loading="lazy" [src]="launch.links.flickr.original[0]" mat-card-image />
   <mat-card-content>
     {{ launch.details }}
   </mat-card-content>
