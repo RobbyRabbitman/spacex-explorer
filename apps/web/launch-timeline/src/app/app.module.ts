@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { environment } from '../environments/environment';
 import { DataLaunchModule } from '@spacex/launch/data/data-launch';
 import { SPACEX_API_BASE_URL } from '@spacex/shared/data/data-common';
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxsModule.forRoot([], {
       developmentMode: !environment.production,
     }),
+    NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     DataLaunchModule,
     HttpClientModule,
