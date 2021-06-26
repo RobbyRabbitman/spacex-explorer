@@ -1,23 +1,44 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { EMPTY, Observable } from 'rxjs';
 import { Launch } from '@spacex/shared/types/launch';
 import { LaunchApiService } from '../api/launch-api.service';
-import { GetLaunches, GetLaunch } from './launch.actions';
+import {
+  GetLaunches,
+  GetLaunch,
+  GetLatestLaunch,
+  GetNextLaunch,
+} from './launch.actions';
 import { SpacexState, SpacexStateModel } from '@spacex/shared/data/data-common';
+import { switchMapTo, tap } from 'rxjs/operators';
 
 export class LaunchStateModel implements SpacexStateModel<Launch> {
   entities: Launch[] | undefined;
+  next: Launch | undefined;
+  latest: Launch | undefined;
 }
 export const launch_state = 'launch';
 @State<LaunchStateModel>({
   name: launch_state,
-  defaults: { entities: undefined },
 })
 @Injectable()
-export class LaunchState extends SpacexState<LaunchStateModel> {
+export class LaunchState extends SpacexState<
+  Launch,
+  LaunchStateModel,
+  LaunchApiService
+> {
   constructor(api: LaunchApiService) {
     super(api);
+  }
+
+  @Selector()
+  static nextLaunch(state: LaunchStateModel): Launch | undefined {
+    return state.next;
+  }
+
+  @Selector()
+  static latestLaunch(state: LaunchStateModel): Launch | undefined {
+    return state.latest;
   }
 
   @Action(GetLaunches)
@@ -33,5 +54,23 @@ export class LaunchState extends SpacexState<LaunchStateModel> {
     { id }: GetLaunch
   ): Observable<never> {
     return super.getEntity(ctx, id);
+  }
+
+  @Action(GetLatestLaunch)
+  public getLatestLaunch(
+    ctx: StateContext<LaunchStateModel>
+  ): Observable<never> {
+    return this.resource.fetchLatestLaunch().pipe(
+      tap((launch) => ctx.patchState({ latest: launch })),
+      switchMapTo(EMPTY)
+    );
+  }
+
+  @Action(GetNextLaunch)
+  public getNextLaunch(ctx: StateContext<LaunchStateModel>): Observable<never> {
+    return this.resource.fetchNextLaunch().pipe(
+      tap((launch) => ctx.patchState({ next: launch })),
+      switchMapTo(EMPTY)
+    );
   }
 }

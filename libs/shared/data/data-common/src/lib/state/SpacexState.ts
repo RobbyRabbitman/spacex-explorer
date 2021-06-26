@@ -6,10 +6,14 @@ import { switchMapTo, tap } from 'rxjs/operators';
 import { SpacexResource } from '../SpacexResource';
 import { SpacexStateModel } from './SpacexStateModel';
 
-export abstract class SpacexState<S extends SpacexStateModel<Entity>> {
-  constructor(protected readonly api: SpacexResource<Entity>) {}
+export abstract class SpacexState<
+  E extends Entity,
+  S extends SpacexStateModel<E>,
+  R extends SpacexResource<E>
+> {
+  constructor(protected readonly resource: R) {}
   protected getEntities(ctx: StateContext<S>): Observable<never> {
-    return this.api.fetchEntities().pipe(
+    return this.resource.fetchEntities().pipe(
       tap((entities) => ctx.patchState({ entities } as Partial<S>)),
       switchMapTo(EMPTY)
     );
@@ -20,7 +24,7 @@ export abstract class SpacexState<S extends SpacexStateModel<Entity>> {
       const entity = entities.find((x) => x.id === id);
       if (isNonNull(entity)) return EMPTY;
       else {
-        return this.api.fetch(id).pipe(
+        return this.resource.fetch(id).pipe(
           tap((entity) => {
             entities.push(entity);
             ctx.patchState({ entities } as Partial<S>);
@@ -29,7 +33,7 @@ export abstract class SpacexState<S extends SpacexStateModel<Entity>> {
         );
       }
     } else
-      return this.api.fetch(id).pipe(
+      return this.resource.fetch(id).pipe(
         tap((entity) => ctx.patchState({ entities: [entity] } as Partial<S>)),
         switchMapTo(EMPTY)
       );

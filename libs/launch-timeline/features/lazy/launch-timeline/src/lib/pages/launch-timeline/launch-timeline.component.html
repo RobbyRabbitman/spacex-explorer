@@ -1,6 +1,7 @@
 <launch-timeline-ui-launch-overview-card
   [launch]="launch"
   *ngFor="let launch of launches$ | async"
+  [id]="launch.id"
 >
   <launch-timeline-ui-launch-overview-card-actions>
     <button
