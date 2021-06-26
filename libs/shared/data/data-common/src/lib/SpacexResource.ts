@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
 import { Endpoint } from './Endpoint';
 import { HttpClient } from '@angular/common/http';
-import { UUID } from '@spacex/shared/types/common';
+import { Entity, UUID } from '@spacex/shared/types/common';
 /**
  *  common resources pattern: GET /<route>, GET /<route>/:id, POST /<route>/query
  */
-export abstract class SpacexResource<Entity> extends Endpoint {
+export abstract class SpacexResource<E extends Entity> extends Endpoint {
   constructor(
     baseUrl: string,
     route: string,
@@ -14,11 +14,11 @@ export abstract class SpacexResource<Entity> extends Endpoint {
     super(baseUrl, route);
   }
 
-  public fetchEntities(): Observable<Array<Entity>> {
-    return this.http.get<Array<Entity>>(this.endpoint);
+  public fetchEntities(): Observable<Array<E>> {
+    return this.http.get<Array<E>>(this.endpoint);
   }
 
-  public fetch(id: UUID): Observable<Entity> {
-    return this.http.get<Entity>(`${this.endpoint}/${id}`);
+  public fetch(id: UUID): Observable<E> {
+    return this.http.get<E>(`${this.endpoint}/${id}`);
   }
 }
