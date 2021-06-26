@@ -17,7 +17,7 @@ export class LaunchStateModel implements SpacexStateModel<Launch> {
   next: Launch | undefined;
   latest: Launch | undefined;
 }
-export const launch_state = 'launch';
+export const launch_state = 'launch_state';
 @State<LaunchStateModel>({
   name: launch_state,
 })
