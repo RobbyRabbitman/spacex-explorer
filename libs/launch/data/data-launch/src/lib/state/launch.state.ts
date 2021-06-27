@@ -14,12 +14,19 @@ import { switchMapTo, tap } from 'rxjs/operators';
 
 export class LaunchStateModel implements SpacexStateModel<Launch> {
   entities: Launch[] | undefined;
+  fetchedAllEntities: boolean | undefined;
   next: Launch | undefined;
   latest: Launch | undefined;
 }
 export const launch_state = 'launch_state';
 @State<LaunchStateModel>({
   name: launch_state,
+  defaults: {
+    fetchedAllEntities: false,
+    entities: undefined,
+    latest: undefined,
+    next: undefined,
+  },
 })
 @Injectable()
 export class LaunchState extends SpacexState<

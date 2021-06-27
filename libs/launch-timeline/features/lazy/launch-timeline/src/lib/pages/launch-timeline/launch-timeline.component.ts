@@ -36,9 +36,14 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
   ) {}
 
   public ngOnInit(): void {
-    this.store
-      .dispatch(GetLaunches)
-      .subscribe({ complete: () => this.store.dispatch(GetLatestLaunch) });
+    if (
+      !this.store.selectSnapshot(
+        SharedSelectors.fetchedAllEntities(LaunchState)
+      )
+    )
+      this.store
+        .dispatch(GetLaunches)
+        .subscribe({ complete: () => this.store.dispatch(GetLatestLaunch) });
     this._launches$ = this.store
       .select(SharedSelectors.getEntities<Launch>(LaunchState))
       .pipe(
@@ -49,12 +54,17 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    this.store
-      .select(LaunchState.latestLaunch)
-      .pipe(filter(isNonNull), take(1))
-      .subscribe({
-        next: (launch) => this.viewPortScroller.scrollToAnchor(launch.id),
-      });
+    if (
+      !this.store.selectSnapshot(
+        SharedSelectors.fetchedAllEntities(LaunchState)
+      )
+    )
+      this.store
+        .select(LaunchState.latestLaunch)
+        .pipe(filter(isNonNull), take(1))
+        .subscribe({
+          next: (launch) => this.viewPortScroller.scrollToAnchor(launch.id),
+        });
   }
 
   public navigateToLaunchDetail({ id }: Launch): Observable<boolean> {

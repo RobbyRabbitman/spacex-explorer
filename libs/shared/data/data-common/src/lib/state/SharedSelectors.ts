@@ -23,4 +23,11 @@ export abstract class SharedSelectors {
       (state: SpacexStateModel<E>) => state.entities
     );
   }
+
+  public static fetchedAllEntities<E extends Entity>(stateClass: unknown) {
+    return createSelector(
+      [stateClass],
+      (state: SpacexStateModel<E>) => state.fetchedAllEntities
+    );
+  }
 }

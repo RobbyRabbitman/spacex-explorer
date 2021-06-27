@@ -14,7 +14,9 @@ export abstract class SpacexState<
   constructor(protected readonly resource: R) {}
   protected getEntities(ctx: StateContext<S>): Observable<never> {
     return this.resource.fetchEntities().pipe(
-      tap((entities) => ctx.patchState({ entities } as Partial<S>)),
+      tap((entities) =>
+        ctx.patchState({ entities, fetchedAllEntities: true } as Partial<S>)
+      ),
       switchMapTo(EMPTY)
     );
   }
