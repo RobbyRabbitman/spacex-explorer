@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 import { DataLaunchModule } from '@spacex/launch/data/data-launch';
 import { SPACEX_API_BASE_URL } from '@spacex/shared/data/data-common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { DataRouteHistoryModule } from '@spacex/shared/data/data-route-history';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -31,6 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     DataLaunchModule,
+    DataRouteHistoryModule,
     HttpClientModule,
   ],
   providers: [

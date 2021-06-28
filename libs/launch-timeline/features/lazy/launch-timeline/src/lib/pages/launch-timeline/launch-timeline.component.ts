@@ -17,6 +17,7 @@ import {
 import { sortByKey } from '@spacex/shared/util/util-data';
 import { isNonNull } from '@spacex/shared/util/util-ts';
 import { ViewportScroller } from '@angular/common';
+import { RouteHistoryState } from '@spacex/shared/data/data-route-history';
 @Component({
   selector: 'launch-timeline-launch-timeline',
   templateUrl: './launch-timeline.component.html',
@@ -54,6 +55,22 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
+    this.checkIfLaunchesAreFetched();
+    this.checkIfNavigatedFromDetail();
+  }
+
+  public navigateToLaunchDetail({ id }: Launch): Observable<boolean> {
+    return from(
+      this.router.navigate([`../${PAGE_LAUNCH_DETAIL}`], {
+        relativeTo: this.route,
+        queryParams: {
+          [QUERY_PARAM_LAUNCH_DETAIL_ID]: id,
+        },
+      })
+    );
+  }
+
+  private checkIfLaunchesAreFetched(): void {
     if (
       !this.store.selectSnapshot(
         SharedSelectors.fetchedAllEntities(LaunchState)
@@ -67,14 +84,9 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
         });
   }
 
-  public navigateToLaunchDetail({ id }: Launch): Observable<boolean> {
-    return from(
-      this.router.navigate([`../${PAGE_LAUNCH_DETAIL}`], {
-        relativeTo: this.route,
-        queryParams: {
-          [QUERY_PARAM_LAUNCH_DETAIL_ID]: id,
-        },
-      })
-    );
+  private checkIfNavigatedFromDetail(): void {
+    const id = this.store.selectSnapshot(RouteHistoryState.getRouterState(1))
+      ?.root.queryParams[QUERY_PARAM_LAUNCH_DETAIL_ID];
+    if (isNonNull(id)) this.viewPortScroller.scrollToAnchor(id);
   }
 }
