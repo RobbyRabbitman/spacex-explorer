@@ -11,5 +11,6 @@ module.exports = {
     '<rootDir>/libs/launch-timeline/features/lazy/launch-timeline',
     '<rootDir>/libs/launch-timeline/ui/launch-overview-card',
     '<rootDir>/libs/shared/util/util-data',
+    '<rootDir>/libs/shared/data/data-route-history',
   ],
 };

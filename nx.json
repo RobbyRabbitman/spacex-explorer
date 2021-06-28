@@ -34,6 +34,9 @@
     "shared-data-data-common": {
       "tags": ["scope:shared", "type:data"]
     },
+    "shared-data-data-route-history": {
+      "tags": ["scope:shared", "type:data"]
+    },
     "shared-types-common": {
       "tags": ["scope:shared", "type:types"]
     },

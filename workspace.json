@@ -200,6 +200,47 @@
         }
       }
     },
+    "shared-data-data-route-history": {
+      "projectType": "library",
+      "root": "libs/shared/data/data-route-history",
+      "sourceRoot": "libs/shared/data/data-route-history/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/data/data-route-history"],
+          "options": {
+            "project": "libs/shared/data/data-route-history/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/data/data-route-history/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/data/data-route-history/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data/data-route-history"],
+          "options": {
+            "jestConfig": "libs/shared/data/data-route-history/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/data/data-route-history/src/**/*.ts",
+              "libs/shared/data/data-route-history/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-types-common": {
       "root": "libs/shared/types/common",
       "sourceRoot": "libs/shared/types/common/src",
