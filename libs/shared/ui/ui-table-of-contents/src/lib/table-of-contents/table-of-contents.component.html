@@ -1,0 +1,9 @@
+<h6 *ngIf="header">{{ header }}</h6>
+<button
+  (clicked)="contentClicked.emit(content)"
+  mat-button
+  *ngFor="let content of contents"
+  [ngClass]="[content === active ? 'btn--active' : 'btn--non-active']"
+>
+  {{ content }}
+</button>

@@ -1,0 +1,9 @@
+@use '~@angular/material' as mat;
+@use './lib/table-of-contents/table-of-contents.component.scss-theme' as toc;
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  @if $color-config != null {
+    @include toc.theme($theme);
+  }
+}

@@ -334,6 +334,47 @@
         }
       }
     },
+    "shared-ui-ui-table-of-contents": {
+      "projectType": "library",
+      "root": "libs/shared/ui/ui-table-of-contents",
+      "sourceRoot": "libs/shared/ui/ui-table-of-contents/src",
+      "prefix": "spacex-ui",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/ui/ui-table-of-contents"],
+          "options": {
+            "project": "libs/shared/ui/ui-table-of-contents/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/ui/ui-table-of-contents/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/ui/ui-table-of-contents/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/ui-table-of-contents"],
+          "options": {
+            "jestConfig": "libs/shared/ui/ui-table-of-contents/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui/ui-table-of-contents/src/**/*.ts",
+              "libs/shared/ui/ui-table-of-contents/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-util-util-data": {
       "root": "libs/shared/util/util-data",
       "sourceRoot": "libs/shared/util/util-data/src",
