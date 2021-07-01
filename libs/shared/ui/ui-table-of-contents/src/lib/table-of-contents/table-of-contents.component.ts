@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TableOfContentsComponent {
   @Input()
-  public contents: Iterable<string> | undefined;
+  public contents: Array<string> | undefined;
   @Input()
   public active: string | undefined;
   @Input()
