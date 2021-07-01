@@ -14,5 +14,6 @@ module.exports = {
     '<rootDir>/libs/shared/data/data-route-history',
     '<rootDir>/libs/shared/ui/ui-table-of-contents',
     '<rootDir>/libs/launch-timeline/data/data-launch-timeline',
+    '<rootDir>/libs/shared/stylesheets',
   ],
 };

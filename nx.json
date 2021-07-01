@@ -40,6 +40,9 @@
     "shared-data-data-route-history": {
       "tags": ["scope:shared", "type:data"]
     },
+    "shared-stylesheets": {
+      "tags": ["scope:shared", "type:styles"]
+    },
     "shared-types-common": {
       "tags": ["scope:shared", "type:types"]
     },

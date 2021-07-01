@@ -284,6 +284,37 @@
         }
       }
     },
+    "shared-stylesheets": {
+      "root": "libs/shared/stylesheets",
+      "sourceRoot": "libs/shared/stylesheets/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/stylesheets",
+            "main": "libs/shared/stylesheets/src/index.ts",
+            "tsConfig": "libs/shared/stylesheets/tsconfig.lib.json",
+            "assets": ["libs/shared/stylesheets/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/stylesheets/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/stylesheets"],
+          "options": {
+            "jestConfig": "libs/shared/stylesheets/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-types-common": {
       "root": "libs/shared/types/common",
       "sourceRoot": "libs/shared/types/common/src",
@@ -501,6 +532,10 @@
               "apps/web/launch-timeline/src/assets"
             ],
             "styles": ["apps/web/launch-timeline/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/stylesheets/src/lib"]
+            },
+            "extractCss": true,
             "scripts": []
           },
           "configurations": {
