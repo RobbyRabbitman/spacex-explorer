@@ -8,7 +8,7 @@ import {
 } from '@spacex/launch/data/data-launch';
 import { SharedSelectors } from '@spacex/shared/data/data-common';
 import { Launch } from '@spacex/shared/types/launch';
-import { from, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
 import {
   PAGE_LAUNCH_DETAIL,
@@ -24,10 +24,20 @@ import { RouteHistoryState } from '@spacex/shared/data/data-route-history';
   styleUrls: ['./launch-timeline.component.scss'],
 })
 export class LaunchTimelineComponent implements OnInit, AfterViewInit {
-  private _launches$: Observable<Array<Launch>> | undefined;
-  public get launches$(): Observable<Array<Launch>> | undefined {
+  private _launches$: Observable<Map<number, Array<Launch>>> | undefined;
+  public get launches$(): Observable<Map<number, Array<Launch>>> | undefined {
     return this._launches$;
   }
+
+  private _launchYears$: Observable<Array<string>> | undefined;
+  public get launchYears$(): Observable<Array<string>> | undefined {
+    return this._launchYears$;
+  }
+
+  private _activeYear$ = new BehaviorSubject<string | undefined>(undefined);
+  public readonly activeYear$ = this._activeYear$
+    .asObservable()
+    .pipe(filter(isNonNull), shareReplay(1));
 
   public constructor(
     private readonly store: Store,
@@ -45,14 +55,32 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
       this.store
         .dispatch(GetLaunches)
         .subscribe({ complete: () => this.store.dispatch(GetLatestLaunch) });
+
     this._launches$ = this.store
       .select(SharedSelectors.getEntities<Launch>(LaunchState))
       .pipe(
         filter(isNonNull),
-        map((launches) => sortByKey(launches, 'date_unix', (a, b) => b - a)),
+        map((launches) =>
+          sortByKey(launches, 'date_unix', (a, b) => b - a).reduce(
+            (launchMap, launch) => {
+              const year = Number(new Date(launch.date_utc).getUTCFullYear());
+              launchMap.has(year)
+                ? launchMap.get(year)?.push(launch)
+                : launchMap.set(year, [launch]);
+              return launchMap;
+            },
+            new Map<number, Array<Launch>>()
+          )
+        ),
         shareReplay(1)
       );
+
+    this._launchYears$ = this._launches$.pipe(
+      map((launches) => Array.from(launches.keys()).map(String))
+    );
   }
+
+  public sortNull = () => null;
 
   public ngAfterViewInit(): void {
     this.checkIfLaunchesAreFetched();
@@ -70,6 +98,11 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
     );
   }
 
+  public scrollToLaunchYear(year: string) {
+    this._activeYear$.next(year);
+    this.viewPortScroller.scrollToAnchor(year);
+  }
+
   private checkIfLaunchesAreFetched(): void {
     if (
       !this.store.selectSnapshot(
@@ -80,13 +113,32 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
         .select(LaunchState.latestLaunch)
         .pipe(filter(isNonNull), take(1))
         .subscribe({
-          next: (launch) => this.viewPortScroller.scrollToAnchor(launch.id),
+          next: (launch) => {
+            this._activeYear$.next(
+              String(new Date(launch.date_utc).getUTCFullYear())
+            );
+            this.viewPortScroller.scrollToAnchor(launch.id);
+          },
         });
   }
 
   private checkIfNavigatedFromDetail(): void {
     const id = this.store.selectSnapshot(RouteHistoryState.getRouterState(1))
       ?.root.queryParams[QUERY_PARAM_LAUNCH_DETAIL_ID];
-    if (isNonNull(id)) this.viewPortScroller.scrollToAnchor(id);
+    if (isNonNull(id)) {
+      this.store
+        .select(SharedSelectors.getEntities<Launch>(LaunchState))
+        .pipe(filter(isNonNull), take(1))
+        .subscribe({
+          next: (launches) => {
+            const launch = launches.find((launch) => launch.id === id);
+            if (isNonNull(launch))
+              this._activeYear$.next(
+                String(new Date(launch.date_utc).getUTCFullYear())
+              );
+          },
+        });
+      this.viewPortScroller.scrollToAnchor(id);
+    }
   }
 }

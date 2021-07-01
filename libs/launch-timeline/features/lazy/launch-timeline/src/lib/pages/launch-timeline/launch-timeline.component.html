@@ -1,15 +1,32 @@
-<launch-timeline-ui-launch-overview-card
-  [launch]="launch"
-  *ngFor="let launch of launches$ | async"
-  [id]="launch.id"
->
-  <launch-timeline-ui-launch-overview-card-actions>
-    <button
-      (click)="navigateToLaunchDetail(launch)"
-      mat-raised-button
-      color="primary"
+<section class="launches">
+  <ng-container
+    *ngFor="let launchesPerYear of launches$ | async | keyvalue: sortNull"
+  >
+    <h2 [id]="launchesPerYear.key" class="launches__header">
+      {{ launchesPerYear.key }}
+    </h2>
+    <launch-timeline-ui-launch-overview-card
+      [launch]="launch"
+      *ngFor="let launch of launchesPerYear.value"
+      [id]="launch.id"
     >
-      Details
-    </button>
-  </launch-timeline-ui-launch-overview-card-actions>
-</launch-timeline-ui-launch-overview-card>
+      <launch-timeline-ui-launch-overview-card-actions>
+        <button
+          (click)="navigateToLaunchDetail(launch)"
+          mat-raised-button
+          color="primary"
+        >
+          Details
+        </button>
+      </launch-timeline-ui-launch-overview-card-actions>
+    </launch-timeline-ui-launch-overview-card>
+  </ng-container>
+</section>
+<spacex-ui-table-of-contents
+  *ngIf="launchYears$ | async as launchYears"
+  class="toc"
+  [contents]="launchYears"
+  [active]="activeYear$ | async"
+  (contentClicked)="scrollToLaunchYear($event)"
+>
+</spacex-ui-table-of-contents>
