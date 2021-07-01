@@ -8,16 +8,27 @@ import {
 } from '@spacex/launch/data/data-launch';
 import { SharedSelectors } from '@spacex/shared/data/data-common';
 import { Launch } from '@spacex/shared/types/launch';
-import { BehaviorSubject, from, Observable } from 'rxjs';
-import { filter, map, shareReplay, take } from 'rxjs/operators';
+import { EMPTY, from, Observable } from 'rxjs';
+import {
+  filter,
+  map,
+  shareReplay,
+  switchMap,
+  switchMapTo,
+  take,
+  tap,
+} from 'rxjs/operators';
 import {
   PAGE_LAUNCH_DETAIL,
   QUERY_PARAM_LAUNCH_DETAIL_ID,
 } from '../../routes/routes';
-import { sortByKey } from '@spacex/shared/util/util-data';
 import { isNonNull } from '@spacex/shared/util/util-ts';
 import { ViewportScroller } from '@angular/common';
 import { RouteHistoryState } from '@spacex/shared/data/data-route-history';
+import {
+  LaunchTimelineState,
+  SetActiveYear,
+} from '@spacex/launch-timeline/data/data-launch-timeline';
 @Component({
   selector: 'launch-timeline-launch-timeline',
   templateUrl: './launch-timeline.component.html',
@@ -25,19 +36,8 @@ import { RouteHistoryState } from '@spacex/shared/data/data-route-history';
 })
 export class LaunchTimelineComponent implements OnInit, AfterViewInit {
   private _launches$: Observable<Map<number, Array<Launch>>> | undefined;
-  public get launches$(): Observable<Map<number, Array<Launch>>> | undefined {
-    return this._launches$;
-  }
-
-  private _launchYears$: Observable<Array<string>> | undefined;
-  public get launchYears$(): Observable<Array<string>> | undefined {
-    return this._launchYears$;
-  }
-
-  private _activeYear$ = new BehaviorSubject<string | undefined>(undefined);
-  public readonly activeYear$ = this._activeYear$
-    .asObservable()
-    .pipe(filter(isNonNull), shareReplay(1));
+  private _launchYears$: Observable<Array<number>> | undefined;
+  private _activeYear$: Observable<number> | undefined;
 
   public constructor(
     private readonly store: Store,
@@ -45,6 +45,17 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
     private readonly route: ActivatedRoute,
     private readonly viewPortScroller: ViewportScroller
   ) {}
+
+  public get launches$(): Observable<Map<number, Array<Launch>>> | undefined {
+    return this._launches$;
+  }
+  public get launchYears$(): Observable<Array<number>> | undefined {
+    return this._launchYears$;
+  }
+
+  public get activeYear$(): Observable<number> | undefined {
+    return this._activeYear$;
+  }
 
   public ngOnInit(): void {
     if (
@@ -57,30 +68,19 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
         .subscribe({ complete: () => this.store.dispatch(GetLatestLaunch) });
 
     this._launches$ = this.store
-      .select(SharedSelectors.getEntities<Launch>(LaunchState))
-      .pipe(
-        filter(isNonNull),
-        map((launches) =>
-          sortByKey(launches, 'date_unix', (a, b) => b - a).reduce(
-            (launchMap, launch) => {
-              const year = Number(new Date(launch.date_utc).getUTCFullYear());
-              launchMap.has(year)
-                ? launchMap.get(year)?.push(launch)
-                : launchMap.set(year, [launch]);
-              return launchMap;
-            },
-            new Map<number, Array<Launch>>()
-          )
-        ),
-        shareReplay(1)
-      );
+      .select(LaunchTimelineState.launchesPerYear)
+      .pipe(filter(isNonNull), shareReplay(1));
 
-    this._launchYears$ = this._launches$.pipe(
-      map((launches) => Array.from(launches.keys()).map(String))
-    );
+    this._launchYears$ = this.store
+      .select(LaunchTimelineState.launchYears)
+      .pipe(filter(isNonNull), shareReplay(1));
+
+    this._activeYear$ = this.store
+      .select(LaunchTimelineState.activeYear)
+      .pipe(filter(isNonNull), shareReplay(1));
   }
 
-  public sortNull = () => null;
+  public keyValuePipeKeepOrder = () => null;
 
   public ngAfterViewInit(): void {
     this.checkIfLaunchesAreFetched();
@@ -98,9 +98,9 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
     );
   }
 
-  public scrollToLaunchYear(year: string) {
-    this._activeYear$.next(year);
-    this.viewPortScroller.scrollToAnchor(year);
+  public contentClicked(year: number | string) {
+    this.store.dispatch(new SetActiveYear(Number(year)));
+    this._scrollToYear(Number(year));
   }
 
   private checkIfLaunchesAreFetched(): void {
@@ -111,15 +111,18 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
     )
       this.store
         .select(LaunchState.latestLaunch)
-        .pipe(filter(isNonNull), take(1))
-        .subscribe({
-          next: (launch) => {
-            this._activeYear$.next(
-              String(new Date(launch.date_utc).getUTCFullYear())
-            );
-            this.viewPortScroller.scrollToAnchor(launch.id);
-          },
-        });
+        .pipe(
+          filter(isNonNull),
+          take(1),
+          switchMap((launch) =>
+            this.store
+              .dispatch(
+                new SetActiveYear(new Date(launch.date_utc).getUTCFullYear())
+              )
+              .pipe(tap(() => this.scrollToLaunch(launch)))
+          )
+        )
+        .subscribe();
   }
 
   private checkIfNavigatedFromDetail(): void {
@@ -128,17 +131,31 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
     if (isNonNull(id)) {
       this.store
         .select(SharedSelectors.getEntities<Launch>(LaunchState))
-        .pipe(filter(isNonNull), take(1))
-        .subscribe({
-          next: (launches) => {
+        .pipe(
+          filter(isNonNull),
+          take(1),
+          switchMap((launches) => {
             const launch = launches.find((launch) => launch.id === id);
-            if (isNonNull(launch))
-              this._activeYear$.next(
-                String(new Date(launch.date_utc).getUTCFullYear())
-              );
-          },
-        });
-      this.viewPortScroller.scrollToAnchor(id);
+            return isNonNull(launch)
+              ? this.store
+                  .dispatch(
+                    new SetActiveYear(
+                      new Date(launch.date_utc).getUTCFullYear()
+                    )
+                  )
+                  .pipe(tap(() => this.scrollToLaunch(launch)))
+              : EMPTY;
+          })
+        )
+        .subscribe();
     }
+  }
+
+  private _scrollToYear(year: number): void {
+    this.viewPortScroller.scrollToAnchor(String(year));
+  }
+
+  private scrollToLaunch({ id }: Launch): void {
+    this.viewPortScroller.scrollToAnchor(id);
   }
 }

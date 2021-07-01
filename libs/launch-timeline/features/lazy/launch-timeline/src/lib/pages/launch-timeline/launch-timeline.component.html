@@ -1,6 +1,8 @@
 <section class="launches">
   <ng-container
-    *ngFor="let launchesPerYear of launches$ | async | keyvalue: sortNull"
+    *ngFor="
+      let launchesPerYear of launches$ | async | keyvalue: keyValuePipeKeepOrder
+    "
   >
     <h2 [id]="launchesPerYear.key" class="launches__header">
       {{ launchesPerYear.key }}
@@ -27,6 +29,6 @@
   class="toc"
   [contents]="launchYears"
   [active]="activeYear$ | async"
-  (contentClicked)="scrollToLaunchYear($event)"
+  (contentClicked)="contentClicked($event)"
 >
 </spacex-ui-table-of-contents>

@@ -7,11 +7,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TableOfContentsComponent {
   @Input()
-  public contents: Array<string> | undefined;
+  public contents: Array<string | number> | undefined;
   @Input()
-  public active: string | undefined;
+  public active: string | number | undefined;
   @Input()
-  public header: string | undefined;
+  public header: string | number | undefined;
   @Output()
-  public readonly contentClicked = new EventEmitter<string>();
+  public readonly contentClicked = new EventEmitter<string | number>();
 }

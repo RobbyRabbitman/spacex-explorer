@@ -6,7 +6,6 @@ import { LaunchTimelineRoutingModule } from './routes/launch-timeline-routing.mo
 import { LaunchOverviewCardModule } from '@spacex/launch-timeline/ui/launch-overview-card';
 import { LaunchDetailComponent } from './pages/launch-detail/launch-detail.component';
 import { UiTableOfContentsModule } from '@spacex/shared/ui/ui-table-of-contents';
-
 @NgModule({
   declarations: [LaunchTimelineComponent, LaunchDetailComponent],
   imports: [
