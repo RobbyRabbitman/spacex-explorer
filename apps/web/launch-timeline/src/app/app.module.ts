@@ -11,7 +11,6 @@ import { DataLaunchModule } from '@spacex/launch/data/data-launch';
 import { SPACEX_API_BASE_URL } from '@spacex/shared/data/data-common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataRouteHistoryModule } from '@spacex/shared/data/data-route-history';
-import { DatadataLaunchTimelineModule } from '@spacex/launch-timeline/data/data-launch-timeline';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +32,6 @@ import { DatadataLaunchTimelineModule } from '@spacex/launch-timeline/data/data-
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     DataLaunchModule,
-    DatadataLaunchTimelineModule,
     DataRouteHistoryModule,
     HttpClientModule,
   ],

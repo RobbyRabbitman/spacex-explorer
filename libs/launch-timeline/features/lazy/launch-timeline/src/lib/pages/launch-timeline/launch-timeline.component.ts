@@ -8,16 +8,8 @@ import {
 } from '@spacex/launch/data/data-launch';
 import { SharedSelectors } from '@spacex/shared/data/data-common';
 import { Launch } from '@spacex/shared/types/launch';
-import { EMPTY, from, Observable } from 'rxjs';
-import {
-  filter,
-  map,
-  shareReplay,
-  switchMap,
-  switchMapTo,
-  take,
-  tap,
-} from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
+import { filter, shareReplay, switchMap, take, tap } from 'rxjs/operators';
 import {
   PAGE_LAUNCH_DETAIL,
   QUERY_PARAM_LAUNCH_DETAIL_ID,
@@ -25,10 +17,9 @@ import {
 import { isNonNull } from '@spacex/shared/util/util-ts';
 import { ViewportScroller } from '@angular/common';
 import { RouteHistoryState } from '@spacex/shared/data/data-route-history';
-import {
-  LaunchTimelineState,
-  SetActiveYear,
-} from '@spacex/launch-timeline/data/data-launch-timeline';
+import { SetActiveYear } from '../../state/launch-timeline.actions';
+import { LaunchTimelineState } from '../../state/launch-timeline.state';
+
 @Component({
   selector: 'launch-timeline-launch-timeline',
   templateUrl: './launch-timeline.component.html',

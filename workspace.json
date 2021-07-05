@@ -42,49 +42,6 @@
         }
       }
     },
-    "launch-timeline-data-data-launch-timeline": {
-      "projectType": "library",
-      "root": "libs/launch-timeline/data/data-launch-timeline",
-      "sourceRoot": "libs/launch-timeline/data/data-launch-timeline/src",
-      "prefix": "spacex",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/launch-timeline/data/data-launch-timeline"],
-          "options": {
-            "project": "libs/launch-timeline/data/data-launch-timeline/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/launch-timeline/data/data-launch-timeline/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/launch-timeline/data/data-launch-timeline/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/launch-timeline/data/data-launch-timeline"
-          ],
-          "options": {
-            "jestConfig": "libs/launch-timeline/data/data-launch-timeline/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/launch-timeline/data/data-launch-timeline/src/**/*.ts",
-              "libs/launch-timeline/data/data-launch-timeline/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
     "launch-timeline-features-lazy-launch-timeline": {
       "projectType": "library",
       "root": "libs/launch-timeline/features/lazy/launch-timeline",

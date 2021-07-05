@@ -22,9 +22,6 @@
     "launch-data-data-launch": {
       "tags": ["scope:shared", "type:data"]
     },
-    "launch-timeline-data-data-launch-timeline": {
-      "tags": ["scope:launch-timeline", "type:data"]
-    },
     "launch-timeline-features-lazy-launch-timeline": {
       "tags": ["scope:web-launch-timeline", "type:feature-lazy"]
     },
