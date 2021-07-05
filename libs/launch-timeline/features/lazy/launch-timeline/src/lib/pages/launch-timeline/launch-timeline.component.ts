@@ -78,6 +78,23 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
     this._activeYear$ = this.store
       .select(LaunchTimelineState.activeYear)
       .pipe(filter(isNonNull), shareReplay(1));
+
+    const id = this.store.selectSnapshot(RouteHistoryState.getRouterState(1))
+      ?.root.queryParams[QUERY_PARAM_LAUNCH_DETAIL_ID];
+    if (isNonNull(id)) {
+      this.store
+        .select(SharedSelectors.getEntities<Launch>(LaunchState))
+        .pipe(filter(isNonNull), take(1))
+        .subscribe({
+          next: (launches) => {
+            const launch = launches.find((launch) => launch.id === id);
+            if (isNonNull(launch))
+              this.store.dispatch(
+                new SetActiveYear(new Date(launch.date_utc).getUTCFullYear())
+              );
+          },
+        });
+    }
   }
 
   public keyValuePipeKeepOrder = () => null;
@@ -131,23 +148,13 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
     if (isNonNull(id)) {
       this.store
         .select(SharedSelectors.getEntities<Launch>(LaunchState))
-        .pipe(
-          filter(isNonNull),
-          take(1),
-          switchMap((launches) => {
+        .pipe(filter(isNonNull), take(1))
+        .subscribe({
+          next: (launches) => {
             const launch = launches.find((launch) => launch.id === id);
-            return isNonNull(launch)
-              ? this.store
-                  .dispatch(
-                    new SetActiveYear(
-                      new Date(launch.date_utc).getUTCFullYear()
-                    )
-                  )
-                  .pipe(tap(() => this.scrollToLaunch(launch)))
-              : EMPTY;
-          })
-        )
-        .subscribe();
+            if (isNonNull(launch)) this.scrollToLaunch(launch);
+          },
+        });
     }
   }
 
