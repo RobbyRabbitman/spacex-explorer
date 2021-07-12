@@ -19,6 +19,7 @@ import { ViewportScroller } from '@angular/common';
 import { RouteHistoryState } from '@spacex/shared/data/data-route-history';
 import { SetActiveYear } from '../../state/launch-timeline.actions';
 import { LaunchTimelineState } from '../../state/launch-timeline.state';
+import { IntersectionStatus } from '@spacex/shared/util/util-intersection-observer';
 
 @Component({
   selector: 'launch-timeline-launch-timeline',
@@ -104,6 +105,10 @@ export class LaunchTimelineComponent implements OnInit, AfterViewInit {
         },
       })
     );
+  }
+
+  public visibilityChange(status: IntersectionStatus, year: number): void {
+    if (status === IntersectionStatus.Visible) console.log(year);
   }
 
   public contentClicked(year: number | string) {

@@ -43,6 +43,9 @@
       "@spacex/shared/util/util-data": [
         "libs/shared/util/util-data/src/index.ts"
       ],
+      "@spacex/shared/util/util-intersection-observer": [
+        "libs/shared/util/util-intersection-observer/src/index.ts"
+      ],
       "@spacex/shared/util/util-ts": ["libs/shared/util/util-ts/src/index.ts"]
     }
   },

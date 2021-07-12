@@ -14,5 +14,7 @@ module.exports = {
     '<rootDir>/libs/shared/data/data-route-history',
     '<rootDir>/libs/shared/ui/ui-table-of-contents',
     '<rootDir>/libs/shared/stylesheets',
+    '<rootDir>/libs/shared/util/util-intersection-observer',
+    '<rootDir>/apps/web/rockets',
   ],
 };

@@ -4,7 +4,12 @@
       let launchesPerYear of launches$ | async | keyvalue: keyValuePipeKeepOrder
     "
   >
-    <h2 [id]="launchesPerYear.key" class="launches__header">
+    <h2
+      spacexUtilIntersectionObserver
+      (visibilityChange)="visibilityChange($event, launchesPerYear.key)"
+      [id]="launchesPerYear.key"
+      class="launches__header"
+    >
       {{ launchesPerYear.key }}
     </h2>
     <launch-timeline-ui-launch-overview-card

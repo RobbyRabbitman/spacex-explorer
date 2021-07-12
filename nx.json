@@ -55,6 +55,9 @@
     "shared-util-util-data": {
       "tags": ["scope:shared", "type:util"]
     },
+    "shared-util-util-intersection-observer": {
+      "tags": ["scope:shared", "type:util"]
+    },
     "shared-util-util-ts": {
       "tags": ["scope:shared", "type:util"]
     },
@@ -64,6 +67,13 @@
     "web-launch-timeline-e2e": {
       "tags": [],
       "implicitDependencies": ["web-launch-timeline"]
+    },
+    "web-rockets": {
+      "tags": ["scope:web", "type:app"]
+    },
+    "web-rockets-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web-rockets"]
     }
   }
 }

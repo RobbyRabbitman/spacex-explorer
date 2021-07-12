@@ -8,6 +8,7 @@ import { LaunchDetailComponent } from './pages/launch-detail/launch-detail.compo
 import { UiTableOfContentsModule } from '@spacex/shared/ui/ui-table-of-contents';
 import { NgxsModule } from '@ngxs/store';
 import { LaunchTimelineState } from './state/launch-timeline.state';
+import { UtilIntersectionObserverModule } from '@spacex/shared/util/util-intersection-observer';
 @NgModule({
   declarations: [LaunchTimelineComponent, LaunchDetailComponent],
   imports: [
@@ -17,6 +18,7 @@ import { LaunchTimelineState } from './state/launch-timeline.state';
     LaunchOverviewCardModule,
     UiTableOfContentsModule,
     NgxsModule.forFeature([LaunchTimelineState]),
+    UtilIntersectionObserverModule,
   ],
 })
 export class LaunchTimelineModule {}

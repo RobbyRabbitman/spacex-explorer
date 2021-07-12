@@ -9,7 +9,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/launch/data/data-launch"],
+          "outputs": [
+            "dist/libs/launch/data/data-launch"
+          ],
           "options": {
             "project": "libs/launch/data/data-launch/ng-package.json"
           },
@@ -25,7 +27,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/launch/data/data-launch"],
+          "outputs": [
+            "coverage/libs/launch/data/data-launch"
+          ],
           "options": {
             "jestConfig": "libs/launch/data/data-launch/jest.config.js",
             "passWithNoTests": true
@@ -95,7 +99,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/launch-timeline/ui/launch-overview-card"],
+          "outputs": [
+            "dist/libs/launch-timeline/ui/launch-overview-card"
+          ],
           "options": {
             "project": "libs/launch-timeline/ui/launch-overview-card/ng-package.json"
           },
@@ -111,7 +117,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/launch-timeline/ui/launch-overview-card"],
+          "outputs": [
+            "coverage/libs/launch-timeline/ui/launch-overview-card"
+          ],
           "options": {
             "jestConfig": "libs/launch-timeline/ui/launch-overview-card/jest.config.js",
             "passWithNoTests": true
@@ -136,7 +144,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/rocket/data/data-rocket"],
+          "outputs": [
+            "dist/libs/rocket/data/data-rocket"
+          ],
           "options": {
             "project": "libs/rocket/data/data-rocket/ng-package.json"
           },
@@ -152,7 +162,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/rocket/data/data-rocket"],
+          "outputs": [
+            "coverage/libs/rocket/data/data-rocket"
+          ],
           "options": {
             "jestConfig": "libs/rocket/data/data-rocket/jest.config.js",
             "passWithNoTests": true
@@ -176,23 +188,31 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/shared/data/data-common",
             "main": "libs/shared/data/data-common/src/index.ts",
             "tsConfig": "libs/shared/data/data-common/tsconfig.lib.json",
-            "assets": ["libs/shared/data/data-common/*.md"]
+            "assets": [
+              "libs/shared/data/data-common/*.md"
+            ]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/data/data-common/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/data/data-common/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/data/data-common"],
+          "outputs": [
+            "coverage/libs/shared/data/data-common"
+          ],
           "options": {
             "jestConfig": "libs/shared/data/data-common/jest.config.js",
             "passWithNoTests": true
@@ -208,7 +228,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/shared/data/data-route-history"],
+          "outputs": [
+            "dist/libs/shared/data/data-route-history"
+          ],
           "options": {
             "project": "libs/shared/data/data-route-history/ng-package.json"
           },
@@ -224,7 +246,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/data/data-route-history"],
+          "outputs": [
+            "coverage/libs/shared/data/data-route-history"
+          ],
           "options": {
             "jestConfig": "libs/shared/data/data-route-history/jest.config.js",
             "passWithNoTests": true
@@ -248,23 +272,31 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/shared/stylesheets",
             "main": "libs/shared/stylesheets/src/index.ts",
             "tsConfig": "libs/shared/stylesheets/tsconfig.lib.json",
-            "assets": ["libs/shared/stylesheets/*.md"]
+            "assets": [
+              "libs/shared/stylesheets/*.md"
+            ]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/stylesheets/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/stylesheets/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/stylesheets"],
+          "outputs": [
+            "coverage/libs/shared/stylesheets"
+          ],
           "options": {
             "jestConfig": "libs/shared/stylesheets/jest.config.js",
             "passWithNoTests": true
@@ -279,23 +311,31 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/shared/types/common",
             "main": "libs/shared/types/common/src/index.ts",
             "tsConfig": "libs/shared/types/common/tsconfig.lib.json",
-            "assets": ["libs/shared/types/common/*.md"]
+            "assets": [
+              "libs/shared/types/common/*.md"
+            ]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/types/common/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/types/common/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/types/common"],
+          "outputs": [
+            "coverage/libs/shared/types/common"
+          ],
           "options": {
             "jestConfig": "libs/shared/types/common/jest.config.js",
             "passWithNoTests": true
@@ -310,23 +350,31 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/shared/types/launch",
             "main": "libs/shared/types/launch/src/index.ts",
             "tsConfig": "libs/shared/types/launch/tsconfig.lib.json",
-            "assets": ["libs/shared/types/launch/*.md"]
+            "assets": [
+              "libs/shared/types/launch/*.md"
+            ]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/types/launch/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/types/launch/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/types/launch"],
+          "outputs": [
+            "coverage/libs/shared/types/launch"
+          ],
           "options": {
             "jestConfig": "libs/shared/types/launch/jest.config.js",
             "passWithNoTests": true
@@ -341,23 +389,31 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/shared/types/rocket",
             "main": "libs/shared/types/rocket/src/index.ts",
             "tsConfig": "libs/shared/types/rocket/tsconfig.lib.json",
-            "assets": ["libs/shared/types/rocket/*.md"]
+            "assets": [
+              "libs/shared/types/rocket/*.md"
+            ]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/types/rocket/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/types/rocket/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/types/rocket"],
+          "outputs": [
+            "coverage/libs/shared/types/rocket"
+          ],
           "options": {
             "jestConfig": "libs/shared/types/rocket/jest.config.js",
             "passWithNoTests": true
@@ -373,7 +429,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/shared/ui/ui-table-of-contents"],
+          "outputs": [
+            "dist/libs/shared/ui/ui-table-of-contents"
+          ],
           "options": {
             "project": "libs/shared/ui/ui-table-of-contents/ng-package.json"
           },
@@ -389,7 +447,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/ui/ui-table-of-contents"],
+          "outputs": [
+            "coverage/libs/shared/ui/ui-table-of-contents"
+          ],
           "options": {
             "jestConfig": "libs/shared/ui/ui-table-of-contents/jest.config.js",
             "passWithNoTests": true
@@ -413,26 +473,79 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/shared/util/util-data",
             "main": "libs/shared/util/util-data/src/index.ts",
             "tsConfig": "libs/shared/util/util-data/tsconfig.lib.json",
-            "assets": ["libs/shared/util/util-data/*.md"]
+            "assets": [
+              "libs/shared/util/util-data/*.md"
+            ]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/util/util-data/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/util/util-data/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/util/util-data"],
+          "outputs": [
+            "coverage/libs/shared/util/util-data"
+          ],
           "options": {
             "jestConfig": "libs/shared/util/util-data/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-util-util-intersection-observer": {
+      "projectType": "library",
+      "root": "libs/shared/util/util-intersection-observer",
+      "sourceRoot": "libs/shared/util/util-intersection-observer/src",
+      "prefix": "spacex-util",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": [
+            "dist/libs/shared/util/util-intersection-observer"
+          ],
+          "options": {
+            "project": "libs/shared/util/util-intersection-observer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/util/util-intersection-observer/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/util/util-intersection-observer/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/shared/util/util-intersection-observer"
+          ],
+          "options": {
+            "jestConfig": "libs/shared/util/util-intersection-observer/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/util/util-intersection-observer/src/**/*.ts",
+              "libs/shared/util/util-intersection-observer/src/**/*.html"
+            ]
           }
         }
       }
@@ -444,23 +557,31 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/shared/util/util-ts",
             "main": "libs/shared/util/util-ts/src/index.ts",
             "tsConfig": "libs/shared/util/util-ts/tsconfig.lib.json",
-            "assets": ["libs/shared/util/util-ts/*.md"]
+            "assets": [
+              "libs/shared/util/util-ts/*.md"
+            ]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/util/util-ts/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/util/util-ts/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/util/util-ts"],
+          "outputs": [
+            "coverage/libs/shared/util/util-ts"
+          ],
           "options": {
             "jestConfig": "libs/shared/util/util-ts/jest.config.js",
             "passWithNoTests": true
@@ -476,7 +597,9 @@
       "targets": {
         "build": {
           "executor": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/web/launch-timeline",
             "index": "apps/web/launch-timeline/src/index.html",
@@ -488,9 +611,13 @@
               "apps/web/launch-timeline/src/favicon.ico",
               "apps/web/launch-timeline/src/assets"
             ],
-            "styles": ["apps/web/launch-timeline/src/styles.scss"],
+            "styles": [
+              "apps/web/launch-timeline/src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/stylesheets/src/lib"]
+              "includePaths": [
+                "libs/shared/stylesheets/src/lib"
+              ]
             },
             "extractCss": true,
             "scripts": []
@@ -557,7 +684,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/web/launch-timeline"],
+          "outputs": [
+            "coverage/apps/web/launch-timeline"
+          ],
           "options": {
             "jestConfig": "apps/web/launch-timeline/jest.config.js",
             "passWithNoTests": true
@@ -586,7 +715,136 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/web/launch-timeline-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/web/launch-timeline-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "web-rockets": {
+      "projectType": "application",
+      "root": "apps/web/rockets",
+      "sourceRoot": "apps/web/rockets/src",
+      "prefix": "spacex-rockets",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/web/rockets",
+            "index": "apps/web/rockets/src/index.html",
+            "main": "apps/web/rockets/src/main.ts",
+            "polyfills": "apps/web/rockets/src/polyfills.ts",
+            "tsConfig": "apps/web/rockets/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/web/rockets/src/favicon.ico",
+              "apps/web/rockets/src/assets"
+            ],
+            "styles": [
+              "apps/web/rockets/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/rockets/src/environments/environment.ts",
+                  "with": "apps/web/rockets/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "web-rockets:build:production"
+            },
+            "development": {
+              "browserTarget": "web-rockets:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-rockets:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/web/rockets/src/**/*.ts",
+              "apps/web/rockets/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/web/rockets"
+          ],
+          "options": {
+            "jestConfig": "apps/web/rockets/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-rockets-e2e": {
+      "root": "apps/web/rockets-e2e",
+      "sourceRoot": "apps/web/rockets-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/web/rockets-e2e/cypress.json",
+            "tsConfig": "apps/web/rockets-e2e/tsconfig.e2e.json",
+            "devServerTarget": "web-rockets:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "web-rockets:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/web/rockets-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
