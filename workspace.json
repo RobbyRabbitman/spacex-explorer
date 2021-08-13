@@ -735,6 +735,9 @@
               "apps/web/rockets/src/assets"
             ],
             "styles": ["apps/web/rockets/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/stylesheets/src/lib"]
+            },
             "scripts": []
           },
           "configurations": {
