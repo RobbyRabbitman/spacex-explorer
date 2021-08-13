@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
-import { isNonNull } from '@spacex/shared/util/util-ts';
 import { GetRockets, GetRocket } from './rockets.actions';
-import { switchMapTo, tap } from 'rxjs/operators';
-import { EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Rocket } from '@spacex/shared/types/rocket';
 import { RocketApiService } from '../api/rocket-api.service';
+import { SpacexState, SpacexStateModel } from '@spacex/shared/data/data-common';
 
-export type RocketStateModel = Array<Rocket> | null;
+export class RocketStateModel implements SpacexStateModel<Rocket> {
+  entities: Rocket[] | undefined;
+  fetchedAllEntities: boolean | undefined;
+}
 export const rocket_state = 'rocket';
-@State<RocketStateModel>({ name: rocket_state, defaults: null })
+@State<RocketStateModel>({
+  name: rocket_state,
+  defaults: { entities: undefined, fetchedAllEntities: false },
+})
 @Injectable()
-export class RocketState {
-  constructor(private readonly api: RocketApiService) {}
+export class RocketState extends SpacexState<
+  Rocket,
+  RocketStateModel,
+  RocketApiService
+> {
+  constructor(api: RocketApiService) {
+    super(api);
+  }
 
   @Action(GetRockets)
   public getAllRockets(ctx: StateContext<RocketStateModel>): Observable<never> {
-    return this.api.fetchAll().pipe(
-      tap((rockets) => ctx.setState(rockets)),
-      switchMapTo(EMPTY)
-    );
+    return super.getEntities(ctx);
   }
 
   @Action(GetRocket)
@@ -27,16 +35,6 @@ export class RocketState {
     ctx: StateContext<RocketStateModel>,
     { id }: GetRocket
   ): Observable<never> {
-    const state = ctx.getState();
-    if (state?.find((rocket) => rocket.id === id) == null)
-      return this.api.fetchOne(id).pipe(
-        tap((rocket) =>
-          isNonNull(state)
-            ? ctx.setState([...state, rocket])
-            : ctx.setState([rocket])
-        ),
-        switchMapTo(EMPTY)
-      );
-    else return EMPTY;
+    return super.getEntity(ctx, id);
   }
 }

@@ -16,5 +16,6 @@ module.exports = {
     '<rootDir>/libs/shared/stylesheets',
     '<rootDir>/libs/shared/util/util-intersection-observer',
     '<rootDir>/apps/web/rockets',
+    '<rootDir>/libs/rockets/features/lazy/rockets-overview',
   ],
 };
