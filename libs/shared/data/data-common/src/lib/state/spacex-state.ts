@@ -3,8 +3,8 @@ import { Entity, UUID } from '@spacex/shared/types/common';
 import { isNonNull } from '@spacex/shared/util/util-ts';
 import { Observable, EMPTY } from 'rxjs';
 import { switchMapTo, tap } from 'rxjs/operators';
-import { SpacexResource } from '../SpacexResource';
-import { SpacexStateModel } from './SpacexStateModel';
+import { SpacexResource } from '../spacex-resource';
+import { SpacexStateModel } from './spacex-state-model';
 
 export abstract class SpacexState<
   E extends Entity,

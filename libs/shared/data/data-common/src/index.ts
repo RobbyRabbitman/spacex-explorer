@@ -1,8 +1,8 @@
 // state
-export * from './lib/state/SharedSelectors';
-export * from './lib/state/SpacexState';
-export * from './lib/state/SpacexStateModel';
+export * from './lib/state/shared-selectors';
+export * from './lib/state/spacex-state';
+export * from './lib/state/spacex-state-model';
 // api
 export * from './lib/spacex-api.token';
 export * from './lib/Endpoint';
-export * from './lib/SpacexResource';
+export * from './lib/spacex-resource';

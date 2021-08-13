@@ -1,7 +1,7 @@
 import { isNonNull } from '@spacex/shared/util/util-ts';
 import { createSelector } from '@ngxs/store';
 import { Entity, UUID } from '@spacex/shared/types/common';
-import { SpacexStateModel } from './SpacexStateModel';
+import { SpacexStateModel } from './spacex-state-model';
 
 export abstract class SharedSelectors {
   /*TODO why this doesnt work, when use this function? public static getEntity<S extends SpacexState<SpacexStateModel<Entity>>>(
