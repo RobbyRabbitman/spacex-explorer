@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
-import { Endpoint } from './Endpoint';
 import { HttpClient } from '@angular/common/http';
 import { Entity, UUID } from '@spacex/shared/types/common';
+import { Endpoint } from './endpoint';
 /**
  *  common resources pattern: GET /<route>, GET /<route>/:id, POST /<route>/query
  */
