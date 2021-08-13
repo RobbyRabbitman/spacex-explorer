@@ -1,1 +1,5 @@
-{{ rockets$ | async | json }}
+<rocket-ui-rocket-card
+  [rocket]="rocket"
+  *ngFor="let rocket of rockets$ | async"
+>
+</rocket-ui-rocket-card>

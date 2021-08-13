@@ -27,6 +27,9 @@
       "@spacex/rocket/data/data-rocket": [
         "libs/rocket/data/data-rocket/src/index.ts"
       ],
+      "@spacex/rocket/ui/ui-rocket-card": [
+        "libs/rocket/ui/ui-rocket-card/src/index.ts"
+      ],
       "@spacex/rockets/features/lazy/rockets-overview": [
         "libs/rockets/features/lazy/rockets-overview/src/index.ts"
       ],

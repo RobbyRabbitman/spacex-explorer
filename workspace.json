@@ -169,6 +169,47 @@
         }
       }
     },
+    "rocket-ui-ui-rocket-card": {
+      "projectType": "library",
+      "root": "libs/rocket/ui/ui-rocket-card",
+      "sourceRoot": "libs/rocket/ui/ui-rocket-card/src",
+      "prefix": "rocket-ui",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/rocket/ui/ui-rocket-card"],
+          "options": {
+            "project": "libs/rocket/ui/ui-rocket-card/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/rocket/ui/ui-rocket-card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/rocket/ui/ui-rocket-card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rocket/ui/ui-rocket-card"],
+          "options": {
+            "jestConfig": "libs/rocket/ui/ui-rocket-card/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/rocket/ui/ui-rocket-card/src/**/*.ts",
+              "libs/rocket/ui/ui-rocket-card/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "rockets-features-lazy-rockets-overview": {
       "projectType": "library",
       "root": "libs/rockets/features/lazy/rockets-overview",

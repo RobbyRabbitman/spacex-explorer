@@ -31,6 +31,9 @@
     "rocket-data-data-rocket": {
       "tags": ["scope:shared", "type:data"]
     },
+    "rocket-ui-ui-rocket-card": {
+      "tags": ["scope:rocket", "type:ui"]
+    },
     "rockets-features-lazy-rockets-overview": {
       "tags": ["scope:rockets", "type:feature-lazy"]
     },
