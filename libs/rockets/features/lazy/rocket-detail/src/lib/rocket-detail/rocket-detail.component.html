@@ -1,1 +1,6 @@
-{{ (rocket$ | async)?.name }}
+<ng-container *ngIf="rocket$ | async as rocket">
+  <h1>{{ rocket.name }}</h1>
+  <spacex-ui-image-slider [images]="rocket.flickr_images">
+  </spacex-ui-image-slider>
+  <p>{{ rocket.description }}</p>
+</ng-container>
