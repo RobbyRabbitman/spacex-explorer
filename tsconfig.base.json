@@ -49,6 +49,9 @@
       "@spacex/shared/types/common": ["libs/shared/types/common/src/index.ts"],
       "@spacex/shared/types/launch": ["libs/shared/types/launch/src/index.ts"],
       "@spacex/shared/types/rocket": ["libs/shared/types/rocket/src/index.ts"],
+      "@spacex/shared/ui/ui-image-slider": [
+        "libs/shared/ui/ui-image-slider/src/index.ts"
+      ],
       "@spacex/shared/ui/ui-table-of-contents": [
         "libs/shared/ui/ui-table-of-contents/src/index.ts"
       ],

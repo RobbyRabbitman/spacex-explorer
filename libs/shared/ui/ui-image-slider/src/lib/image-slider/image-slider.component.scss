@@ -1,0 +1,20 @@
+.image-slider-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-wrapper {
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
+
+.images {
+  flex: 1;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}

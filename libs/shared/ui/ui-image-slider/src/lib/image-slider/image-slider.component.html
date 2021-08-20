@@ -1,0 +1,25 @@
+<div *ngIf="images && images.length > 0" class="image-slider-container">
+  <div class="icon-wrapper">
+    <button
+      *ngIf="selected > 0"
+      mat-icon-button
+      (click)="selected = selected - 1"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+  </div>
+  <div class="images">
+    <ng-container *ngFor="let image of images; let i = index">
+      <img class="image" loading="lazy" [src]="image" *ngIf="selected === i" />
+    </ng-container>
+  </div>
+  <div class="icon-wrapper">
+    <button
+      *ngIf="selected < images.length - 2"
+      mat-icon-button
+      (click)="selected = selected + 1"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>
