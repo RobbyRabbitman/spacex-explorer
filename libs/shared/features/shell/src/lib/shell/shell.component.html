@@ -1,8 +1,10 @@
-<mat-toolbar color="primary">
-  <button routerLink="" mat-button>{{ config.appName }}</button>
-</mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="container">
+  <mat-toolbar class="header mat-elevation-z12" color="primary">
+    <button routerLink="" mat-button>{{ config.appName }}</button>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav-content class="sidenav-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
