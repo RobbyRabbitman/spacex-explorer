@@ -55,6 +55,9 @@
     "shared-types-rocket": {
       "tags": ["scope:shared", "type:types"]
     },
+    "shared-ui-ui-shell": {
+      "tags": ["scope:shared", "type:ui"]
+    },
     "shared-ui-ui-table-of-contents": {
       "tags": ["scope:shared", "type:ui"]
     },
