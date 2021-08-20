@@ -3,4 +3,7 @@
   <spacex-ui-image-slider [images]="rocket.flickr_images">
   </spacex-ui-image-slider>
   <p>{{ rocket.description }}</p>
+  <rocket-ui-rocket-engine-card
+    [engine]="rocket.engines"
+  ></rocket-ui-rocket-engine-card>
 </ng-container>
