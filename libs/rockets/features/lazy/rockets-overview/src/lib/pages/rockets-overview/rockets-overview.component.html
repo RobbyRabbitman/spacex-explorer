@@ -2,4 +2,12 @@
   [rocket]="rocket"
   *ngFor="let rocket of rockets$ | async"
 >
+  <button
+    slot="actions"
+    color="primary"
+    mat-raised-button
+    (click)="showDetail(rocket)"
+  >
+    Details
+  </button>
 </rocket-ui-rocket-card>

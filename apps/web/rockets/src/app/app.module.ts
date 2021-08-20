@@ -20,11 +20,23 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {
-        path: '',
+        path: 'overview',
         loadChildren: () =>
           import('@spacex/rockets/features/lazy/rockets-overview').then(
             (module) => module.RocketsOverviewModule
           ),
+      },
+      {
+        path: 'rocket',
+        loadChildren: () =>
+          import('@spacex/rockets/features/lazy/rocket-detail').then(
+            (module) => module.RocketDetailModule
+          ),
+      },
+      {
+        path: '**',
+        redirectTo: 'overview',
+        pathMatch: 'full',
       },
     ]),
     NgxsModule.forRoot([], {

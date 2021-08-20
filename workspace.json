@@ -210,6 +210,47 @@
         }
       }
     },
+    "rockets-features-lazy-rocket-detail": {
+      "projectType": "library",
+      "root": "libs/rockets/features/lazy/rocket-detail",
+      "sourceRoot": "libs/rockets/features/lazy/rocket-detail/src",
+      "prefix": "rockets",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/rockets/features/lazy/rocket-detail"],
+          "options": {
+            "project": "libs/rockets/features/lazy/rocket-detail/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/rockets/features/lazy/rocket-detail/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/rockets/features/lazy/rocket-detail/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rockets/features/lazy/rocket-detail"],
+          "options": {
+            "jestConfig": "libs/rockets/features/lazy/rocket-detail/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/rockets/features/lazy/rocket-detail/src/**/*.ts",
+              "libs/rockets/features/lazy/rocket-detail/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "rockets-features-lazy-rockets-overview": {
       "projectType": "library",
       "root": "libs/rockets/features/lazy/rockets-overview",

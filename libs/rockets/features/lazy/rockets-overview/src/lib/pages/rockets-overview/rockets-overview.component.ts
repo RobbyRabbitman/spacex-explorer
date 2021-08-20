@@ -4,6 +4,7 @@ import { SharedSelectors } from '@spacex/shared/data/data-common';
 import { GetRockets, RocketState } from '@spacex/rocket/data/data-rocket';
 import { Observable } from 'rxjs';
 import { Rocket } from '@spacex/shared/types/rocket';
+import { Navigate } from '@ngxs/router-plugin';
 
 @Component({
   selector: 'rockets-rockets-overview',
@@ -29,5 +30,9 @@ export class RocketsOverviewComponent implements OnInit {
     this._rockets$ = this.store.select(
       SharedSelectors.getEntities(RocketState)
     );
+  }
+
+  public showDetail({ id }: Rocket): void {
+    this.store.dispatch(new Navigate(['/rocket'], { id }));
   }
 }

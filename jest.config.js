@@ -19,5 +19,6 @@ module.exports = {
     '<rootDir>/libs/rockets/features/lazy/rockets-overview',
     '<rootDir>/libs/rocket/ui/ui-rocket-card',
     '<rootDir>/libs/shared/features/shell',
+    '<rootDir>/libs/rockets/features/lazy/rocket-detail',
   ],
 };
