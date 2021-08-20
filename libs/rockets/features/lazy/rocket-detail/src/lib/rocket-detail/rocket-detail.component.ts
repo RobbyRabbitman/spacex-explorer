@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { mapTo, pluck, switchMap } from 'rxjs/operators';
+import { catchError, mapTo, pluck, switchMap } from 'rxjs/operators';
 import { QUERY_PARAM_ROCKET_ID } from '../routes/routes';
 import { SharedSelectors } from '@spacex/shared/data/data-common';
 import { GetRocket, RocketState } from '@spacex/rocket/data/data-rocket';
 import { Rocket } from '@spacex/shared/types/rocket';
 import { Observable } from 'rxjs';
+import { Navigate } from '@ngxs/router-plugin';
 
 @Component({
   selector: 'rockets-rocket-detail',
@@ -27,7 +28,12 @@ export class RocketDetailComponent implements OnInit {
   ngOnInit(): void {
     this._rocket$ = this.route.queryParams.pipe(
       pluck(QUERY_PARAM_ROCKET_ID),
-      switchMap((id) => this.store.dispatch(new GetRocket(id)).pipe(mapTo(id))),
+      switchMap((id) =>
+        this.store.dispatch(new GetRocket(id)).pipe(
+          mapTo(id),
+          catchError(() => this.store.dispatch(new Navigate(['/'])))
+        )
+      ),
       switchMap((id) =>
         this.store.select(SharedSelectors.getEntity<Rocket>(RocketState, id))
       )
