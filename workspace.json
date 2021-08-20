@@ -323,6 +323,47 @@
         }
       }
     },
+    "shared-features-shell": {
+      "projectType": "library",
+      "root": "libs/shared/features/shell",
+      "sourceRoot": "libs/shared/features/shell/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/features/shell"],
+          "options": {
+            "project": "libs/shared/features/shell/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/features/shell/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/features/shell/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/features/shell"],
+          "options": {
+            "jestConfig": "libs/shared/features/shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/features/shell/src/**/*.ts",
+              "libs/shared/features/shell/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-stylesheets": {
       "root": "libs/shared/stylesheets",
       "sourceRoot": "libs/shared/stylesheets/src",
@@ -443,47 +484,6 @@
           "options": {
             "jestConfig": "libs/shared/types/rocket/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "shared-ui-ui-shell": {
-      "projectType": "library",
-      "root": "libs/shared/ui/ui-shell",
-      "sourceRoot": "libs/shared/ui/ui-shell/src",
-      "prefix": "spacex-ui",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/shared/ui/ui-shell"],
-          "options": {
-            "project": "libs/shared/ui/ui-shell/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/shared/ui/ui-shell/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/shared/ui/ui-shell/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/ui/ui-shell"],
-          "options": {
-            "jestConfig": "libs/shared/ui/ui-shell/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared/ui/ui-shell/src/**/*.ts",
-              "libs/shared/ui/ui-shell/src/**/*.html"
-            ]
           }
         }
       }

@@ -21,4 +21,4 @@ import { ShellComponent } from './shell/shell.component';
   declarations: [ShellComponent],
   exports: [ShellComponent],
 })
-export class UiShellModule {}
+export class ShellModule {}

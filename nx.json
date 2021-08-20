@@ -43,6 +43,9 @@
     "shared-data-data-route-history": {
       "tags": ["scope:shared", "type:data"]
     },
+    "shared-features-shell": {
+      "tags": ["scope:shared", "type:feature"]
+    },
     "shared-stylesheets": {
       "tags": ["scope:shared", "type:styles"]
     },
@@ -54,9 +57,6 @@
     },
     "shared-types-rocket": {
       "tags": ["scope:shared", "type:types"]
-    },
-    "shared-ui-ui-shell": {
-      "tags": ["scope:shared", "type:ui"]
     },
     "shared-ui-ui-table-of-contents": {
       "tags": ["scope:shared", "type:ui"]
