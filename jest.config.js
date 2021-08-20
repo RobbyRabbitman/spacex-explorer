@@ -21,5 +21,6 @@ module.exports = {
     '<rootDir>/libs/shared/features/shell',
     '<rootDir>/libs/rockets/features/lazy/rocket-detail',
     '<rootDir>/libs/shared/ui/ui-image-slider',
+    '<rootDir>/libs/rocket/ui/ui-rocket-engine-card',
   ],
 };
