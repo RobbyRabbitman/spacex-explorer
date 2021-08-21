@@ -51,9 +51,6 @@
       "@spacex/shared/features/shell": [
         "libs/shared/features/shell/src/index.ts"
       ],
-      "@spacex/shared/features/unit": [
-        "libs/shared/features/unit/src/index.ts"
-      ],
       "@spacex/shared/stylesheets": ["libs/shared/stylesheets/src/index.ts"],
       "@spacex/shared/types/common": ["libs/shared/types/common/src/index.ts"],
       "@spacex/shared/types/launch": ["libs/shared/types/launch/src/index.ts"],
@@ -64,13 +61,17 @@
       "@spacex/shared/ui/ui-table-of-contents": [
         "libs/shared/ui/ui-table-of-contents/src/index.ts"
       ],
+      "@spacex/shared/ui/ui-unit": ["libs/shared/ui/ui-unit/src/index.ts"],
       "@spacex/shared/util/util-data": [
         "libs/shared/util/util-data/src/index.ts"
       ],
       "@spacex/shared/util/util-intersection-observer": [
         "libs/shared/util/util-intersection-observer/src/index.ts"
       ],
-      "@spacex/shared/util/util-ts": ["libs/shared/util/util-ts/src/index.ts"]
+      "@spacex/shared/util/util-ts": ["libs/shared/util/util-ts/src/index.ts"],
+      "@spacex/shared/util/util-unit": [
+        "libs/shared/util/util-unit/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

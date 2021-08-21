@@ -487,47 +487,6 @@
         }
       }
     },
-    "shared-features-unit": {
-      "projectType": "library",
-      "root": "libs/shared/features/unit",
-      "sourceRoot": "libs/shared/features/unit/src",
-      "prefix": "spacex",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/shared/features/unit"],
-          "options": {
-            "project": "libs/shared/features/unit/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/shared/features/unit/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/shared/features/unit/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/features/unit"],
-          "options": {
-            "jestConfig": "libs/shared/features/unit/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared/features/unit/src/**/*.ts",
-              "libs/shared/features/unit/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
     "shared-stylesheets": {
       "root": "libs/shared/stylesheets",
       "sourceRoot": "libs/shared/stylesheets/src",
@@ -734,6 +693,47 @@
         }
       }
     },
+    "shared-ui-ui-unit": {
+      "projectType": "library",
+      "root": "libs/shared/ui/ui-unit",
+      "sourceRoot": "libs/shared/ui/ui-unit/src",
+      "prefix": "spacex-ui",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/ui/ui-unit"],
+          "options": {
+            "project": "libs/shared/ui/ui-unit/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/ui/ui-unit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/ui/ui-unit/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/ui-unit"],
+          "options": {
+            "jestConfig": "libs/shared/ui/ui-unit/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui/ui-unit/src/**/*.ts",
+              "libs/shared/ui/ui-unit/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-util-util-data": {
       "root": "libs/shared/util/util-data",
       "sourceRoot": "libs/shared/util/util-data/src",
@@ -833,6 +833,47 @@
           "options": {
             "jestConfig": "libs/shared/util/util-ts/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-util-util-unit": {
+      "projectType": "library",
+      "root": "libs/shared/util/util-unit",
+      "sourceRoot": "libs/shared/util/util-unit/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/util/util-unit"],
+          "options": {
+            "project": "libs/shared/util/util-unit/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/util/util-unit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/util/util-unit/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/util/util-unit"],
+          "options": {
+            "jestConfig": "libs/shared/util/util-unit/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/util/util-unit/src/**/*.ts",
+              "libs/shared/util/util-unit/src/**/*.html"
+            ]
           }
         }
       }

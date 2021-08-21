@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'shared-features-unit',
+  displayName: 'shared-util-util-unit',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/shared/features/unit',
+  coverageDirectory: '../../../../coverage/libs/shared/util/util-unit',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },
