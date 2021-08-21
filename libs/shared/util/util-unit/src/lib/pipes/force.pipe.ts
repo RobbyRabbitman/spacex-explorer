@@ -1,7 +1,7 @@
 import { Inject, Pipe, PipeTransform } from '@angular/core';
 import { Force, Unit } from '@spacex/shared/types/common';
 import { Observable } from 'rxjs';
-import { UNIT$ } from '../unit.token';
+import { UNIT$ } from '../UnitToken';
 import { UnitPipe } from './unit.pipe';
 
 @Pipe({
