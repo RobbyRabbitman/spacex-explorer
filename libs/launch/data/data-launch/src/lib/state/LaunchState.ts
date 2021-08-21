@@ -9,18 +9,13 @@ import {
   GetLatestLaunch,
   GetNextLaunch,
 } from './launch.actions';
-import { SpacexState, SpacexStateModel } from '@spacex/shared/data/data-common';
+import { SpacexState } from '@spacex/shared/data/data-common';
 import { switchMapTo, tap } from 'rxjs/operators';
+import { LaunchStateModel } from './LaunchStateModel';
 
-export class LaunchStateModel implements SpacexStateModel<Launch> {
-  entities: Launch[] | undefined;
-  fetchedAllEntities: boolean | undefined;
-  next: Launch | undefined;
-  latest: Launch | undefined;
-}
-export const launch_state = 'launch_state';
+export const LAUNCH_STATE_NAME = 'launch';
 @State<LaunchStateModel>({
-  name: launch_state,
+  name: LAUNCH_STATE_NAME,
   defaults: {
     fetchedAllEntities: false,
     entities: undefined,
