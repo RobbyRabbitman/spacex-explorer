@@ -22,12 +22,6 @@
     "launch-data-data-launch": {
       "tags": ["scope:shared", "type:data"]
     },
-    "launch-timeline-features-lazy-launch-timeline": {
-      "tags": ["scope:web-launch-timeline", "type:feature-lazy"]
-    },
-    "launch-timeline-ui-launch-overview-card": {
-      "tags": ["scope:web-launch-timeline", "type:ui"]
-    },
     "rocket-data-data-rocket": {
       "tags": ["scope:shared", "type:data"]
     },
@@ -87,13 +81,6 @@
     },
     "shared-util-util-unit": {
       "tags": ["scope:shared", "type:util"]
-    },
-    "web-launch-timeline": {
-      "tags": ["scope:web", "type:app"]
-    },
-    "web-launch-timeline-e2e": {
-      "tags": [],
-      "implicitDependencies": ["web-launch-timeline"]
     },
     "web-rockets": {
       "tags": ["scope:web", "type:app"]

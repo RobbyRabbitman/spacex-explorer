@@ -15,12 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@spacex/launch-timeline/features/lazy/launch-timeline": [
-        "libs/launch-timeline/features/lazy/launch-timeline/src/index.ts"
-      ],
-      "@spacex/launch-timeline/ui/launch-overview-card": [
-        "libs/launch-timeline/ui/launch-overview-card/src/index.ts"
-      ],
       "@spacex/launch/data/data-launch": [
         "libs/launch/data/data-launch/src/index.ts"
       ],
