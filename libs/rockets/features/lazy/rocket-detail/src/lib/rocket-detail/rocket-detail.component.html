@@ -1,9 +1,8 @@
 <ng-container *ngIf="rocket$ | async as rocket">
-  <h1>{{ rocket.name }}</h1>
+  <h1 class="header header--align-center">{{ rocket.name }}</h1>
   <spacex-ui-image-slider [images]="rocket.flickr_images">
   </spacex-ui-image-slider>
   <p>{{ rocket.description }}</p>
-  <rocket-ui-rocket-engine-card
-    [engine]="rocket.engines"
-  ></rocket-ui-rocket-engine-card>
+  <rocket-ui-rocket-engine-card [engine]="rocket.engines">
+  </rocket-ui-rocket-engine-card>
 </ng-container>
