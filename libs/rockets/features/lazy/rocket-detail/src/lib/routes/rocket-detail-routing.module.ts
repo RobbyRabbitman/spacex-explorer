@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { RocketDetailComponent } from '../rocket-detail/rocket-detail.component';
+import { RocketDetailComponent } from '../pages/rocket-detail/rocket-detail.component';
 import { PAGE_ROCKET_DETAIL } from './routes';
 
 @NgModule({
