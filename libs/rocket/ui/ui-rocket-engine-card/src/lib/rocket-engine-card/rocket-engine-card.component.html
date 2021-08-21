@@ -5,8 +5,9 @@
   <mat-card-content>
     <mat-list role="list">
       <mat-list-item role="listitem">
-        <h3 matLine>Number and Layout</h3>
-        <span matLine>{{ engine.number }} ({{ engine.layout }})</span>
+        <h3 matLine>Structure</h3>
+        <span matLine>Number: {{ engine.number }} </span>
+        <span matLine>Layout: {{ engine.layout }}</span>
         <span matLine>Max. loss: {{ engine.engine_loss_max }}</span>
       </mat-list-item>
       <mat-list-item role="listitem">
@@ -15,22 +16,19 @@
         <span matLine>{{ engine.propellant_2 }}</span>
       </mat-list-item>
       <mat-list-item role="listitem">
-        <h3 matLine>Type and Version</h3>
-        <span matLine>{{ engine.type }} ({{ engine.version }})</span>
+        <h3 matLine>Type</h3>
+        <span matLine>{{ engine.type }} {{ engine.version }}</span>
       </mat-list-item>
       <mat-list-item role="listitem">
-        <h3 matLine>Thrust and ISP</h3>
+        <h3 matLine>Thrust</h3>
         <span matLine>
-          At sea level:
+          Sea level:
           <spacex-ui-force [force]="engine.thrust_sea_level"></spacex-ui-force>
-          {{ engine.isp.sea_level }}
         </span>
-        <span matLine
-          >In vacuum:
+        <span matLine>
+          Vacuum:
           <spacex-ui-force [force]="engine.thrust_vacuum"></spacex-ui-force>
-          ({{ engine.isp.vacuum }})
         </span>
-        <span matLine>Thrust to weight: {{ engine.thrust_to_weight }}</span>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
