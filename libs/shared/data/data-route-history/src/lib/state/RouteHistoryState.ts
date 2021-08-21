@@ -19,10 +19,10 @@ export interface RouteHistoryStateModel {
   history: Array<RouterNavigation>;
 }
 
-export const routeHistory_state = 'routeHistory_state';
+export const ROUTE_HISTORY_STATE_NAME = 'route_history';
 
 @State({
-  name: routeHistory_state,
+  name: ROUTE_HISTORY_STATE_NAME,
   defaults: { history: [] },
 })
 @Injectable()

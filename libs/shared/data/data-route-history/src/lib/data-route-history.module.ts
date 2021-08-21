@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
-import { RouteHistoryState } from './state/route-history.state';
+import { RouteHistoryState } from './state/RouteHistoryState';
 
 @NgModule({
   imports: [NgxsModule.forFeature([RouteHistoryState])],
