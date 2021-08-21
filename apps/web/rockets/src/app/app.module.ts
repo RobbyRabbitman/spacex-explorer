@@ -5,12 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule, Store } from '@ngxs/store';
 import { SPACEX_API_BASE_URL } from '@spacex/shared/data/data-common';
 import { DataRocketModule } from '@spacex/rocket/data/data-rocket';
 import { SHELL_CONFIG, ShellModule } from '@spacex/shared/features/shell';
 import { environment } from '../environments/environment';
-
+import { DataUnitModule, UnitState } from '@spacex/shared/data/data-unit';
+import { UNIT$ } from '@spacex/shared/util/util-unit';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { AppComponent } from './app.component';
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     DataRocketModule,
+    DataUnitModule,
     HttpClientModule,
     ShellModule,
   ],
@@ -56,6 +58,11 @@ import { AppComponent } from './app.component';
     {
       provide: SHELL_CONFIG,
       useValue: { appName: 'SpaceX Rockets' },
+    },
+    {
+      provide: UNIT$,
+      useFactory: (store: Store) => store.select(UnitState.unit),
+      deps: [Store],
     },
   ],
   bootstrap: [AppComponent],

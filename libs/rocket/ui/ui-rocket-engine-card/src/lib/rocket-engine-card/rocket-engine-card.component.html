@@ -20,13 +20,15 @@
       </mat-list-item>
       <mat-list-item role="listitem">
         <h3 matLine>Thrust and ISP</h3>
+        <span matLine>
+          At sea level:
+          <spacex-ui-force [force]="engine.thrust_sea_level"></spacex-ui-force>
+          {{ engine.isp.sea_level }}
+        </span>
         <span matLine
-          >At sea level: {{ engine.thrust_sea_level | json }}
-          {{ engine.isp.sea_level }}</span
-        >
-        <span matLine
-          >In vacuum: {{ engine.thrust_vacuum | json }}
-          {{ engine.isp.vacuum }}
+          >In vacuum:
+          <spacex-ui-force [force]="engine.thrust_vacuum"></spacex-ui-force>
+          ({{ engine.isp.vacuum }})
         </span>
         <span matLine>Thrust to weight: {{ engine.thrust_to_weight }}</span>
       </mat-list-item>
