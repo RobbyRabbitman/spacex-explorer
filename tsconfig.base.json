@@ -45,8 +45,14 @@
       "@spacex/shared/data/data-route-history": [
         "libs/shared/data/data-route-history/src/index.ts"
       ],
+      "@spacex/shared/data/data-unit": [
+        "libs/shared/data/data-unit/src/index.ts"
+      ],
       "@spacex/shared/features/shell": [
         "libs/shared/features/shell/src/index.ts"
+      ],
+      "@spacex/shared/features/unit": [
+        "libs/shared/features/unit/src/index.ts"
       ],
       "@spacex/shared/stylesheets": ["libs/shared/stylesheets/src/index.ts"],
       "@spacex/shared/types/common": ["libs/shared/types/common/src/index.ts"],

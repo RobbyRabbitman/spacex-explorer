@@ -405,6 +405,47 @@
         }
       }
     },
+    "shared-data-data-unit": {
+      "projectType": "library",
+      "root": "libs/shared/data/data-unit",
+      "sourceRoot": "libs/shared/data/data-unit/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/data/data-unit"],
+          "options": {
+            "project": "libs/shared/data/data-unit/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/data/data-unit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/data/data-unit/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data/data-unit"],
+          "options": {
+            "jestConfig": "libs/shared/data/data-unit/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/data/data-unit/src/**/*.ts",
+              "libs/shared/data/data-unit/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-features-shell": {
       "projectType": "library",
       "root": "libs/shared/features/shell",
@@ -441,6 +482,47 @@
             "lintFilePatterns": [
               "libs/shared/features/shell/src/**/*.ts",
               "libs/shared/features/shell/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-features-unit": {
+      "projectType": "library",
+      "root": "libs/shared/features/unit",
+      "sourceRoot": "libs/shared/features/unit/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/features/unit"],
+          "options": {
+            "project": "libs/shared/features/unit/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/features/unit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/features/unit/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/features/unit"],
+          "options": {
+            "jestConfig": "libs/shared/features/unit/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/features/unit/src/**/*.ts",
+              "libs/shared/features/unit/src/**/*.html"
             ]
           }
         }
