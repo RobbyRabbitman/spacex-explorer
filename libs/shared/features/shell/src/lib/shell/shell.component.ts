@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { SHELL_CONFIG } from '../shell-config.token';
-import { ShellConfig } from '../shellConfig';
+import { ShellConfig } from '../ShellConfig';
+import { SHELL_CONFIG } from '../ShellConfigToken';
 
 @Component({
   selector: 'spacex-ui-shell',
