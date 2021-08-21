@@ -4,15 +4,12 @@ import { GetRockets, GetRocket } from './rockets.actions';
 import { Observable } from 'rxjs';
 import { Rocket } from '@spacex/shared/types/rocket';
 import { RocketApiService } from '../api/rocket-api.service';
-import { SpacexState, SpacexStateModel } from '@spacex/shared/data/data-common';
+import { SpacexState } from '@spacex/shared/data/data-common';
+import { RocketStateModel } from './RocketStateModel';
 
-export class RocketStateModel implements SpacexStateModel<Rocket> {
-  entities: Rocket[] | undefined;
-  fetchedAllEntities: boolean | undefined;
-}
-export const rocket_state = 'rocket';
+export const ROCKET_STATE_NAME = 'rocket';
 @State<RocketStateModel>({
-  name: rocket_state,
+  name: ROCKET_STATE_NAME,
   defaults: { entities: undefined, fetchedAllEntities: false },
 })
 @Injectable()
