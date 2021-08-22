@@ -31,6 +31,9 @@
     "rocket-ui-ui-rocket-engine-card": {
       "tags": ["scope:rocket", "type:ui"]
     },
+    "rocket-ui-ui-rocket-payloads-weight-table": {
+      "tags": ["scope:rocket", "type:ui"]
+    },
     "rocket-ui-ui-rocket-stage-card": {
       "tags": ["scope:rocket", "type:ui"]
     },
