@@ -1,20 +1,7 @@
-<mat-card *ngIf="stage">
-  <mat-card-header>
-    <mat-card-title>Second Stage</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-list role="list">
-      <mat-list-item role="listitem">
-        <h3 matLine>Engines</h3>
-        <span matLine>Number: {{ stage.engines }}</span>
-        <span matLine>Fuel: {{ stage.fuel_amount_tons }}t</span>
-        <span matLine>Burn time: {{ stage.burn_time_sec }}s</span>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        <h3 matLine>Thrust</h3>
-        <spacex-ui-force matLine [force]="stage.thrust"></spacex-ui-force>
-      </mat-list-item>
-      <!-- TODO payloads and maybe refactor stage components (same structure -> first stage) -->
-    </mat-list>
-  </mat-card-content>
-</mat-card>
+<rocket-ui-rocket-stage-card *ngIf="stage" [stage]="stage" name="Second Stage">
+  <mat-list-item role="listitem">
+    <h3 matLine>Thrust</h3>
+    <spacex-ui-force matLine [force]="stage.thrust"></spacex-ui-force>
+  </mat-list-item>
+  <!-- TODO payloads -->
+</rocket-ui-rocket-stage-card>
