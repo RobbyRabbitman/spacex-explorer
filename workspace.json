@@ -165,6 +165,47 @@
         }
       }
     },
+    "rocket-ui-ui-rocket-payloads-weight-card": {
+      "projectType": "library",
+      "root": "libs/rocket/ui/ui-rocket-payloads-weight-card",
+      "sourceRoot": "libs/rocket/ui/ui-rocket-payloads-weight-card/src",
+      "prefix": "rocket-ui",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/rocket/ui/ui-rocket-payloads-weight-card"],
+          "options": {
+            "project": "libs/rocket/ui/ui-rocket-payloads-weight-card/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/rocket/ui/ui-rocket-payloads-weight-card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/rocket/ui/ui-rocket-payloads-weight-card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rocket/ui/ui-rocket-payloads-weight-card"],
+          "options": {
+            "jestConfig": "libs/rocket/ui/ui-rocket-payloads-weight-card/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/rocket/ui/ui-rocket-payloads-weight-card/src/**/*.ts",
+              "libs/rocket/ui/ui-rocket-payloads-weight-card/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "rocket-ui-ui-rocket-payloads-weight-table": {
       "projectType": "library",
       "root": "libs/rocket/ui/ui-rocket-payloads-weight-table",

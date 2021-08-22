@@ -27,6 +27,9 @@
       "@spacex/rocket/ui/ui-rocket-engine-card": [
         "libs/rocket/ui/ui-rocket-engine-card/src/index.ts"
       ],
+      "@spacex/rocket/ui/ui-rocket-payloads-weight-card": [
+        "libs/rocket/ui/ui-rocket-payloads-weight-card/src/index.ts"
+      ],
       "@spacex/rocket/ui/ui-rocket-payloads-weight-table": [
         "libs/rocket/ui/ui-rocket-payloads-weight-table/src/index.ts"
       ],

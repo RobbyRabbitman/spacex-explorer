@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../../dist/libs/rocket/ui/ui-rocket-payloads-weight-card",
+  "lib": {
+    "entryFile": "src/index.ts"
+  }
+}
