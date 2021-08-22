@@ -5,4 +5,8 @@
   <p>{{ rocket.description }}</p>
   <rocket-ui-rocket-engine-card [engine]="rocket.engines">
   </rocket-ui-rocket-engine-card>
+  <rocket-ui-rocket-first-stage-card [stage]="rocket.first_stage">
+  </rocket-ui-rocket-first-stage-card>
+  <rocket-ui-rocket-second-stage-card [stage]="rocket.second_stage">
+  </rocket-ui-rocket-second-stage-card>
 </ng-container>

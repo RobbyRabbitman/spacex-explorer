@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RocketDetailRoutingModule } from './routes/rocket-detail-routing.module';
 import { UiImageSliderModule } from '@spacex/shared/ui/ui-image-slider';
 import { UiRocketEngineCardModule } from '@spacex/rocket/ui/ui-rocket-engine-card';
+import { UiRocketStageCardModule } from '@spacex/rocket/ui/ui-rocket-stage-card';
 import { RocketDetailComponent } from './pages/rocket-detail/rocket-detail.component';
 @NgModule({
   declarations: [RocketDetailComponent],
@@ -11,6 +12,7 @@ import { RocketDetailComponent } from './pages/rocket-detail/rocket-detail.compo
     RocketDetailRoutingModule,
     UiImageSliderModule,
     UiRocketEngineCardModule,
+    UiRocketStageCardModule,
   ],
 })
 export class RocketDetailModule {}
