@@ -10,4 +10,6 @@ export class ImageSliderComponent {
   public images: Array<string> | undefined;
   @Input()
   public selected = 0;
+  @Input()
+  public height: number | undefined;
 }
