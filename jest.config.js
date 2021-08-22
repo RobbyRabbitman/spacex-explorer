@@ -22,5 +22,6 @@ module.exports = {
     '<rootDir>/libs/shared/data/data-unit',
     '<rootDir>/libs/shared/ui/ui-unit',
     '<rootDir>/libs/shared/util/util-unit',
+    '<rootDir>/libs/rocket/ui/ui-rocket-stage-card',
   ],
 };
