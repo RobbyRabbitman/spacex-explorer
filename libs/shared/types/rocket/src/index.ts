@@ -6,3 +6,5 @@ export * from './lib/RocketLandingLegs';
 export * from './lib/RocketPayload';
 export * from './lib/RocketPayloadWeight';
 export * from './lib/RocketStage';
+export * from './lib/RocketFirstStage';
+export * from './lib/RocketSecondStage';
