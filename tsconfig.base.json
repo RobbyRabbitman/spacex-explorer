@@ -45,6 +45,9 @@
       "@spacex/shared/data/data-unit": [
         "libs/shared/data/data-unit/src/index.ts"
       ],
+      "@spacex/shared/features/select-unit": [
+        "libs/shared/features/select-unit/src/index.ts"
+      ],
       "@spacex/shared/features/shell": [
         "libs/shared/features/shell/src/index.ts"
       ],

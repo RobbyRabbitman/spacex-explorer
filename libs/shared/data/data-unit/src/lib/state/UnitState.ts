@@ -12,8 +12,12 @@ export class UnitState {
   public static unit(state: UnitStateModel): Unit {
     return state;
   }
+  @Selector()
+  public static allUnits(): Array<Unit> {
+    return Object.values(Unit);
+  }
   @Action(SetUnit)
   public setUnit(ctx: StateContext<UnitStateModel>, { unit }: SetUnit): void {
-    ctx.patchState(unit);
+    ctx.setState(unit);
   }
 }

@@ -49,6 +49,9 @@
     "shared-data-data-unit": {
       "tags": ["scope:shared", "type:data"]
     },
+    "shared-features-select-unit": {
+      "tags": ["scope:shared", "type:feature-shared"]
+    },
     "shared-features-shell": {
       "tags": ["scope:shared", "type:feature"]
     },

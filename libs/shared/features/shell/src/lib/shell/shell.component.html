@@ -1,6 +1,13 @@
 <div class="container">
   <mat-toolbar class="header mat-elevation-z12" color="primary">
     <button routerLink="" mat-button>{{ config.appName }}</button>
+    <span class="flex-spacer"></span>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu>
+      <div mat-menu-item><spacex-select-unit></spacex-select-unit></div>
+    </mat-menu>
   </mat-toolbar>
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav-content class="sidenav-content">

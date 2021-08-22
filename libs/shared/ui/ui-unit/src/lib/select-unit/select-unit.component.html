@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label>Select Unit</mat-label>
+  <mat-select
+    [value]="selected"
+    (selectionChange)="valueChanged.emit($event.value)"
+  >
+    <mat-option *ngFor="let unit of values" [value]="unit">
+      {{ unit }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
