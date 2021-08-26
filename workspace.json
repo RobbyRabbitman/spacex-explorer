@@ -372,6 +372,37 @@
         }
       }
     },
+    "shared-assets": {
+      "root": "libs/shared/assets",
+      "sourceRoot": "libs/shared/assets/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/assets",
+            "main": "libs/shared/assets/src/index.ts",
+            "tsConfig": "libs/shared/assets/tsconfig.lib.json",
+            "assets": ["libs/shared/assets/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/assets/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/assets"],
+          "options": {
+            "jestConfig": "libs/shared/assets/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-data-data-common": {
       "root": "libs/shared/data/data-common",
       "sourceRoot": "libs/shared/data/data-common/src",

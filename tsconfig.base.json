@@ -42,6 +42,7 @@
       "@spacex/rockets/features/lazy/rockets-overview": [
         "libs/rockets/features/lazy/rockets-overview/src/index.ts"
       ],
+      "@spacex/shared/assets": ["libs/shared/assets/src/index.ts"],
       "@spacex/shared/data/data-common": [
         "libs/shared/data/data-common/src/index.ts"
       ],

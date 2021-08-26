@@ -46,6 +46,9 @@
     "rockets-features-lazy-rockets-overview": {
       "tags": ["scope:rockets", "type:feature-lazy"]
     },
+    "shared-assets": {
+      "tags": ["scope:shared", "type:assets"]
+    },
     "shared-data-data-common": {
       "tags": ["scope:shared", "type:data"]
     },
