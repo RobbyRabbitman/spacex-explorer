@@ -4,13 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule, Store } from '@ngxs/store';
 import { SPACEX_API_BASE_URL } from '@spacex/shared/data/data-common';
 import { DataRocketModule } from '@spacex/rocket/data/data-rocket';
 import { SHELL_CONFIG, ShellModule } from '@spacex/shared/features/shell';
 import { environment } from '../environments/environment';
-import { DataUnitModule, UnitState } from '@spacex/shared/data/data-unit';
+import {
+  DataUnitModule,
+  UnitState,
+  UNITSTATE_NAME,
+} from '@spacex/shared/data/data-unit';
 import { UNIT$ } from '@spacex/shared/util/util-unit';
 import { AppComponent } from './app.component';
 
@@ -42,6 +47,10 @@ import { AppComponent } from './app.component';
     ]),
     NgxsModule.forRoot([], {
       developmentMode: !environment.production,
+    }),
+    NgxsStoragePluginModule.forRoot({
+      key: [UNITSTATE_NAME],
+      storage: StorageOption.LocalStorage,
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
