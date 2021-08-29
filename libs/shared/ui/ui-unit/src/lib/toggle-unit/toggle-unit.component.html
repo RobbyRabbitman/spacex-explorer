@@ -1,0 +1,9 @@
+<button
+  *ngIf="selected"
+  mat-icon-button
+  [color]="color"
+  (click)="toggle(selected)"
+>
+  <mat-icon [svgIcon]="selected === 'Imperial' ? 'weight_lb' : 'weight_kg'">
+  </mat-icon>
+</button>
