@@ -70,6 +70,9 @@
     "shared-features-shell": {
       "tags": ["scope:shared", "type:feature"]
     },
+    "shared-features-theme": {
+      "tags": ["scope:shared", "type:feature-shared"]
+    },
     "shared-stylesheets": {
       "tags": ["scope:shared", "type:styles"]
     },

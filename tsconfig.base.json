@@ -64,6 +64,9 @@
       "@spacex/shared/features/shell": [
         "libs/shared/features/shell/src/index.ts"
       ],
+      "@spacex/shared/features/theme": [
+        "libs/shared/features/theme/src/index.ts"
+      ],
       "@spacex/shared/stylesheets": ["libs/shared/stylesheets/src/index.ts"],
       "@spacex/shared/types/common": ["libs/shared/types/common/src/index.ts"],
       "@spacex/shared/types/launch": ["libs/shared/types/launch/src/index.ts"],

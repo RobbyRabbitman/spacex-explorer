@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SelectUnitModule } from '@spacex/shared/features/select-unit';
+import { ThemeModule } from '@spacex/shared/features/theme';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +19,7 @@ import { ShellComponent } from './shell/shell.component';
     MatIconModule,
     MatToolbarModule,
     SelectUnitModule,
+    ThemeModule,
     MatMenuModule,
   ],
   declarations: [ShellComponent],

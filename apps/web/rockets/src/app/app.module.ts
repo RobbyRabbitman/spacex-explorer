@@ -16,6 +16,10 @@ import {
   UnitState,
   UNITSTATE_NAME,
 } from '@spacex/shared/data/data-unit';
+import {
+  THEME_STATE_NAME,
+  DataThemeModule,
+} from '@spacex/shared/data/data-theme';
 import { UNIT$ } from '@spacex/shared/util/util-unit';
 import { AppComponent } from './app.component';
 
@@ -49,13 +53,14 @@ import { AppComponent } from './app.component';
       developmentMode: !environment.production,
     }),
     NgxsStoragePluginModule.forRoot({
-      key: [UNITSTATE_NAME],
+      key: [UNITSTATE_NAME, THEME_STATE_NAME],
       storage: StorageOption.LocalStorage,
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     DataRocketModule,
     DataUnitModule,
+    DataThemeModule,
     HttpClientModule,
     ShellModule,
   ],

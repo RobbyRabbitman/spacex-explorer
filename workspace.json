@@ -680,6 +680,47 @@
         }
       }
     },
+    "shared-features-theme": {
+      "projectType": "library",
+      "root": "libs/shared/features/theme",
+      "sourceRoot": "libs/shared/features/theme/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/features/theme"],
+          "options": {
+            "project": "libs/shared/features/theme/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/features/theme/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/features/theme/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/features/theme"],
+          "options": {
+            "jestConfig": "libs/shared/features/theme/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/features/theme/src/**/*.ts",
+              "libs/shared/features/theme/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-stylesheets": {
       "root": "libs/shared/stylesheets",
       "sourceRoot": "libs/shared/stylesheets/src",
@@ -890,7 +931,7 @@
       "projectType": "library",
       "root": "libs/shared/ui/ui-theme",
       "sourceRoot": "libs/shared/ui/ui-theme/src",
-      "prefix": "spacex",
+      "prefix": "spacex-ui",
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",

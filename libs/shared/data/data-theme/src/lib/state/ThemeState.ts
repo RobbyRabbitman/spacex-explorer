@@ -3,13 +3,13 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Theme } from '@spacex/shared/types/common';
 import { SetTheme } from './theme.actions';
 
-export type UnitStateModel = Theme;
+export type ThemeStateModel = Theme;
 export const THEME_STATE_NAME = 'theme';
-@State<UnitStateModel>({ name: THEME_STATE_NAME, defaults: Theme.DARK })
+@State<ThemeStateModel>({ name: THEME_STATE_NAME, defaults: Theme.DARK })
 @Injectable()
-export class UnitState {
+export class ThemeState {
   @Selector()
-  public static theme(state: UnitStateModel): Theme {
+  public static theme(state: ThemeStateModel): Theme {
     return state;
   }
   @Selector()
@@ -18,7 +18,7 @@ export class UnitState {
   }
   @Action(SetTheme)
   public setTheme(
-    ctx: StateContext<UnitStateModel>,
+    ctx: StateContext<ThemeStateModel>,
     { theme }: SetTheme
   ): void {
     ctx.setState(theme);
