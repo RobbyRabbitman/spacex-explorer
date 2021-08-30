@@ -28,5 +28,6 @@ module.exports = {
     '<rootDir>/libs/rocket/ui/ui-rocket-payloads-weight-card',
     '<rootDir>/libs/shared/assets',
     '<rootDir>/libs/rocket/ui/ui-rocket-stages-table',
+    '<rootDir>/libs/shared/ui/ui-theme',
   ],
 };

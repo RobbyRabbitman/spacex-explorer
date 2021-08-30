@@ -71,6 +71,7 @@
       "@spacex/shared/ui/ui-table-of-contents": [
         "libs/shared/ui/ui-table-of-contents/src/index.ts"
       ],
+      "@spacex/shared/ui/ui-theme": ["libs/shared/ui/ui-theme/src/index.ts"],
       "@spacex/shared/ui/ui-unit": ["libs/shared/ui/ui-unit/src/index.ts"],
       "@spacex/shared/util/util-data": [
         "libs/shared/util/util-data/src/index.ts"

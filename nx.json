@@ -85,6 +85,9 @@
     "shared-ui-ui-table-of-contents": {
       "tags": ["scope:shared", "type:ui"]
     },
+    "shared-ui-ui-theme": {
+      "tags": ["scope:shared", "type:ui"]
+    },
     "shared-ui-ui-unit": {
       "tags": ["scope:shared", "type:ui"]
     },
