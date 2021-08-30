@@ -4,4 +4,5 @@ export * from './lib/Force';
 export * from './lib/Length';
 export * from './lib/Unit';
 export * from './lib/UUID';
+export * from './lib/Theme';
 export * from './lib/Mass';
