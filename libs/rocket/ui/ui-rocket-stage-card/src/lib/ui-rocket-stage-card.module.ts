@@ -9,7 +9,11 @@ import { RocketStageCardComponent } from './rocket-stage-card/rocket-stage-card.
 
 @NgModule({
   imports: [CommonModule, MatListModule, MatCardModule, UiUnitModule],
-  declarations: [RocketFirstStageCardComponent, RocketSecondStageCardComponent, RocketStageCardComponent],
+  declarations: [
+    RocketFirstStageCardComponent,
+    RocketSecondStageCardComponent,
+    RocketStageCardComponent,
+  ],
   exports: [RocketFirstStageCardComponent, RocketSecondStageCardComponent],
 })
 export class UiRocketStageCardModule {}

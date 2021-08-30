@@ -36,6 +36,9 @@
       "@spacex/rocket/ui/ui-rocket-stage-card": [
         "libs/rocket/ui/ui-rocket-stage-card/src/index.ts"
       ],
+      "@spacex/rocket/ui/ui-rocket-stages-table": [
+        "libs/rocket/ui/ui-rocket-stages-table/src/index.ts"
+      ],
       "@spacex/rockets/features/lazy/rocket-detail": [
         "libs/rockets/features/lazy/rocket-detail/src/index.ts"
       ],

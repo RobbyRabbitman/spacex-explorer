@@ -1,0 +1,28 @@
+<table mat-table class="table" *ngIf="data" [dataSource]="data">
+  <!-- RocketStage -->
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef>STAGE</th>
+    <td mat-cell *matCellDef="let stage">{{ stage.number }}</td>
+  </ng-container>
+  <ng-container matColumnDef="engines">
+    <th mat-header-cell *matHeaderCellDef>ENGINES</th>
+    <td mat-cell *matCellDef="let stage">{{ stage.engines }}</td>
+  </ng-container>
+  <ng-container matColumnDef="fuel">
+    <th mat-header-cell *matHeaderCellDef>FUEL</th>
+    <td mat-cell *matCellDef="let stage">{{ stage.fuel_amount_tons }}t</td>
+  </ng-container>
+  <ng-container matColumnDef="burnTime">
+    <th mat-header-cell *matHeaderCellDef>BURN TIME</th>
+    <td mat-cell *matCellDef="let stage">{{ stage.burn_time_sec }}s</td>
+  </ng-container>
+  <ng-container matColumnDef="resuable">
+    <th mat-header-cell *matHeaderCellDef>REUSABLE</th>
+    <td mat-cell *matCellDef="let stage">
+      <mat-icon>{{ stage.reusable ? 'check' : 'close' }}</mat-icon>
+    </td>
+  </ng-container>
+  <!-- TODO Specific -->
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns"></tr>
+</table>

@@ -1,0 +1,9 @@
+<mat-card *ngIf="stages">
+  <mat-card-header>
+    <mat-card-title>Stages</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <rocket-ui-rocket-stages-table [stages]="stages">
+    </rocket-ui-rocket-stages-table>
+  </mat-card-content>
+</mat-card>
