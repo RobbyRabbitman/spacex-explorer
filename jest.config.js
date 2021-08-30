@@ -29,5 +29,6 @@ module.exports = {
     '<rootDir>/libs/shared/assets',
     '<rootDir>/libs/rocket/ui/ui-rocket-stages-table',
     '<rootDir>/libs/shared/ui/ui-theme',
+    '<rootDir>/libs/shared/data/data-theme',
   ],
 };

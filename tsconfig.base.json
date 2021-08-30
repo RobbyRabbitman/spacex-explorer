@@ -52,6 +52,9 @@
       "@spacex/shared/data/data-route-history": [
         "libs/shared/data/data-route-history/src/index.ts"
       ],
+      "@spacex/shared/data/data-theme": [
+        "libs/shared/data/data-theme/src/index.ts"
+      ],
       "@spacex/shared/data/data-unit": [
         "libs/shared/data/data-unit/src/index.ts"
       ],

@@ -516,6 +516,47 @@
         }
       }
     },
+    "shared-data-data-theme": {
+      "projectType": "library",
+      "root": "libs/shared/data/data-theme",
+      "sourceRoot": "libs/shared/data/data-theme/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/data/data-theme"],
+          "options": {
+            "project": "libs/shared/data/data-theme/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/data/data-theme/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/data/data-theme/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data/data-theme"],
+          "options": {
+            "jestConfig": "libs/shared/data/data-theme/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/data/data-theme/src/**/*.ts",
+              "libs/shared/data/data-theme/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-data-data-unit": {
       "projectType": "library",
       "root": "libs/shared/data/data-unit",

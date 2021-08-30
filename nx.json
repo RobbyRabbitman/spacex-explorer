@@ -58,6 +58,9 @@
     "shared-data-data-route-history": {
       "tags": ["scope:shared", "type:data"]
     },
+    "shared-data-data-theme": {
+      "tags": ["scope:shared", "type:data"]
+    },
     "shared-data-data-unit": {
       "tags": ["scope:shared", "type:data"]
     },
