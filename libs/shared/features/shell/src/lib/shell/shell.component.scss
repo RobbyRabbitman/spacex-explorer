@@ -14,6 +14,12 @@
   top: 0;
 }
 
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .sidenav-container {
   flex: 1;
 }
