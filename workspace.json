@@ -598,6 +598,47 @@
         }
       }
     },
+    "shared-features-github": {
+      "projectType": "library",
+      "root": "libs/shared/features/github",
+      "sourceRoot": "libs/shared/features/github/src",
+      "prefix": "spacex",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/features/github"],
+          "options": {
+            "project": "libs/shared/features/github/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/features/github/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/features/github/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/features/github"],
+          "options": {
+            "jestConfig": "libs/shared/features/github/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/features/github/src/**/*.ts",
+              "libs/shared/features/github/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-features-select-unit": {
       "projectType": "library",
       "root": "libs/shared/features/select-unit",

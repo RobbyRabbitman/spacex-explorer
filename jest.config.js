@@ -31,5 +31,6 @@ module.exports = {
     '<rootDir>/libs/shared/ui/ui-theme',
     '<rootDir>/libs/shared/data/data-theme',
     '<rootDir>/libs/shared/features/theme',
+    '<rootDir>/libs/shared/features/github',
   ],
 };
