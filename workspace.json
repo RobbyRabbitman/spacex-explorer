@@ -1221,7 +1221,7 @@
             ],
             "styles": ["apps/web/rockets/src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/stylesheets/src/lib"]
+              "includePaths": ["libs/shared/stylesheets"]
             },
             "scripts": []
           },
