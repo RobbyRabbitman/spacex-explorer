@@ -2,9 +2,20 @@
   <h1 class="header header--align-center">{{ rocket.name }}</h1>
   <spacex-ui-image-slider [images]="rocket.flickr_images">
   </spacex-ui-image-slider>
-  <p>{{ rocket.description }}</p>
-  <rocket-ui-rocket-engine-card [engine]="rocket.engines">
-  </rocket-ui-rocket-engine-card>
+  <section id="description">
+    <p>{{ rocket.description }}</p>
+    <p>
+      {{ rocket.name }} weighs
+      <spacex-ui-mass [mass]="rocket.mass"></spacex-ui-mass> and has a diameter
+      of <spacex-ui-length [length]="rocket.diameter"></spacex-ui-length>. A
+      flight costs {{ rocket.cost_per_launch }}$ and has successrate of
+      {{ rocket.success_rate_pct }}% (first flight:
+      {{ rocket.first_flight | date }}).
+    </p>
+  </section>
+  <rocket-ui-rocket-engine-card
+    [engine]="rocket.engines"
+  ></rocket-ui-rocket-engine-card>
   <rocket-ui-rocket-stages-card-table
     [stages]="[rocket.first_stage, rocket.second_stage]"
   >
