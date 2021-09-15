@@ -8,6 +8,7 @@ import { UiRocketStageCardModule } from '@spacex/rocket/ui/ui-rocket-stage-card'
 import { UiRocketStagesTableModule } from '@spacex/rocket/ui/ui-rocket-stages-table';
 import { RocketDetailComponent } from './pages/rocket-detail/rocket-detail.component';
 import { UiUnitModule } from '@spacex/shared/ui/ui-unit';
+import { UiRocketPayloadsWeightTableModule } from '@spacex/rocket/ui/ui-rocket-payloads-weight-table';
 @NgModule({
   declarations: [RocketDetailComponent],
   imports: [
@@ -19,6 +20,7 @@ import { UiUnitModule } from '@spacex/shared/ui/ui-unit';
     UiRocketStageCardModule,
     UiRocketPayloadsWeightCardModule,
     UiRocketStagesTableModule,
+    UiRocketPayloadsWeightTableModule,
   ],
 })
 export class RocketDetailModule {}

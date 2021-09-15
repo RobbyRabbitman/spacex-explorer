@@ -1,25 +1,60 @@
 <ng-container *ngIf="rocket$ | async as rocket">
-  <h1 class="header header--align-center">{{ rocket.name }}</h1>
-  <spacex-ui-image-slider [images]="rocket.flickr_images">
-  </spacex-ui-image-slider>
-  <section id="description">
+  <h1>{{ rocket.name }}</h1>
+  <section id="general">
     <p>{{ rocket.description }}</p>
     <p>
-      {{ rocket.name }} weighs
-      <spacex-ui-mass [mass]="rocket.mass"></spacex-ui-mass> and has a diameter
-      of <spacex-ui-length [length]="rocket.diameter"></spacex-ui-length>. A
-      flight costs {{ rocket.cost_per_launch }}$ and has successrate of
-      {{ rocket.success_rate_pct }}% (first flight:
-      {{ rocket.first_flight | date }}).
+      <spacex-ui-image-slider [images]="rocket.flickr_images">
+      </spacex-ui-image-slider>
+    </p>
+    <p>
+      The {{ rocket.name }} weighs
+      <spacex-ui-mass [mass]="rocket.mass"></spacex-ui-mass> with a height of
+      <spacex-ui-length [length]="rocket.height"></spacex-ui-length> and a
+      diameter of
+      <spacex-ui-length [length]="rocket.diameter"></spacex-ui-length>. A flight
+      costs {{ rocket.cost_per_launch }}$ with a successrate of
+      {{ rocket.success_rate_pct }}%. First flight:
+      {{ rocket.first_flight | date }}.
     </p>
   </section>
-  <rocket-ui-rocket-engine-card
-    [engine]="rocket.engines"
-  ></rocket-ui-rocket-engine-card>
-  <rocket-ui-rocket-stages-card-table
-    [stages]="[rocket.first_stage, rocket.second_stage]"
-  >
-  </rocket-ui-rocket-stages-card-table>
-  <rocket-ui-rocket-payloads-weight-card [payloads]="rocket.payload_weights">
-  </rocket-ui-rocket-payloads-weight-card>
+  <section>
+    <h2>Engines</h2>
+    <p>
+      The {{ rocket.name }} has {{ rocket.engines.number }} engine{{
+        rocket.engines.number === 1 ? '' : 's'
+      }}
+      of type {{ rocket.engines.type }} {{ rocket.engines.version }} as a
+      {{ rocket.engines.layout }} layout which generates thrust of
+      <spacex-ui-force [force]="rocket.engines.thrust_sea_level">
+      </spacex-ui-force>
+      on sea level and
+      <spacex-ui-force [force]="rocket.engines.thrust_vacuum">
+      </spacex-ui-force>
+      in vacuum.
+      <span *ngIf="rocket.engines.engine_loss_max > 1">
+        This setup can handle a loss up to
+        {{ rocket.engines.engine_loss_max }} engines.
+      </span>
+      Propellants are {{ rocket.engines.propellant_1 }} and
+      {{ rocket.engines.propellant_2 }}.
+    </p>
+  </section>
+  <section>
+    <h2>Stages</h2>
+    <p>
+      <rocket-ui-rocket-stages-table
+        [stages]="[rocket.first_stage, rocket.second_stage]"
+      >
+      </rocket-ui-rocket-stages-table>
+    </p>
+  </section>
+  <section>
+    <h2>Payloads</h2>
+    <p>
+      <rocket-ui-rocket-payloads-weight-table
+        [payloads]="rocket.payload_weights"
+      >
+      </rocket-ui-rocket-payloads-weight-table>
+    </p>
+  </section>
 </ng-container>
