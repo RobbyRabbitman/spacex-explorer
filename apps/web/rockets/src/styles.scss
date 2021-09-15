@@ -79,6 +79,16 @@ $dark-theme: mat.define-dark-theme(
   @include mat.all-component-colors($light-theme);
 }
 
+// material
+
+.mat-h1,
+.mat-headline,
+.mat-typography h1 {
+  margin: 1rem 0;
+}
+
+// material end
+
 html,
 body {
   height: 100%;
