@@ -17,7 +17,9 @@
       {{ rocket.first_flight | date }}.
     </p>
   </section>
+
   <section>
+    <mat-divider class="divider"></mat-divider>
     <h2>Engines</h2>
     <p>
       The {{ rocket.name }} has {{ rocket.engines.number }} engine{{
@@ -40,6 +42,7 @@
     </p>
   </section>
   <section>
+    <mat-divider class="divider"></mat-divider>
     <h2>Stages</h2>
     <p>
       <rocket-ui-rocket-stages-table
@@ -49,6 +52,7 @@
     </p>
   </section>
   <section>
+    <mat-divider class="divider"></mat-divider>
     <h2>Payloads</h2>
     <p>
       <rocket-ui-rocket-payloads-weight-table

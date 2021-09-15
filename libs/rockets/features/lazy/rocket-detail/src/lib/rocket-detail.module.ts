@@ -9,6 +9,7 @@ import { UiRocketStagesTableModule } from '@spacex/rocket/ui/ui-rocket-stages-ta
 import { RocketDetailComponent } from './pages/rocket-detail/rocket-detail.component';
 import { UiUnitModule } from '@spacex/shared/ui/ui-unit';
 import { UiRocketPayloadsWeightTableModule } from '@spacex/rocket/ui/ui-rocket-payloads-weight-table';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [RocketDetailComponent],
   imports: [
@@ -21,6 +22,7 @@ import { UiRocketPayloadsWeightTableModule } from '@spacex/rocket/ui/ui-rocket-p
     UiRocketPayloadsWeightCardModule,
     UiRocketStagesTableModule,
     UiRocketPayloadsWeightTableModule,
+    MatDividerModule,
   ],
 })
 export class RocketDetailModule {}
