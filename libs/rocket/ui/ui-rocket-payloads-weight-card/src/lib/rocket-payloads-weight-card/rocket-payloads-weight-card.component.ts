@@ -8,4 +8,6 @@ import { RocketPayloadWeight } from '@spacex/shared/types/rocket';
 export class RocketPayloadsWeightCardComponent {
   @Input()
   public payloads: Array<RocketPayloadWeight> | undefined;
+  @Input()
+  public title: string | undefined;
 }

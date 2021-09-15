@@ -1,6 +1,6 @@
 <mat-card *ngIf="payloads">
-  <mat-card-header>
-    <mat-card-title> Payload Weights </mat-card-title>
+  <mat-card-header *ngIf="title">
+    <mat-card-title>{{ title }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <rocket-ui-rocket-payloads-weight-table

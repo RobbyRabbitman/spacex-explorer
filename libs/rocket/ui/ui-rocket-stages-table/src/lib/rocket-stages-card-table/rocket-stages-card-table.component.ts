@@ -9,4 +9,6 @@ import { RocketStage } from '@spacex/shared/types/rocket';
 export class RocketStagesCardTableComponent {
   @Input()
   public stages: Array<RocketStage> | undefined;
+  @Input()
+  public title: string | undefined;
 }
