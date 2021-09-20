@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import {
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+} from '@angular/fire/compat/analytics';
+import { AngularFireModule } from '@angular/fire/compat';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
@@ -49,6 +54,8 @@ import { AppComponent } from './app.component';
         pathMatch: 'full',
       },
     ]),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
     NgxsModule.forRoot([], {
       developmentMode: !environment.production,
     }),
@@ -78,6 +85,7 @@ import { AppComponent } from './app.component';
       useFactory: (store: Store) => store.select(UnitState.unit),
       deps: [Store],
     },
+    ScreenTrackingService,
   ],
   bootstrap: [AppComponent],
 })
