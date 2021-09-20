@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import {
   AngularFireAnalyticsModule,
+  DEBUG_MODE,
   ScreenTrackingService,
 } from '@angular/fire/compat/analytics';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -72,6 +73,7 @@ import { AppComponent } from './app.component';
     ShellModule,
   ],
   providers: [
+    { provide: DEBUG_MODE, useValue: !environment.production },
     {
       provide: SPACEX_API_BASE_URL,
       useValue: 'https://api.spacexdata.com/v4',
