@@ -32,8 +32,13 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    // core
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    // shell
+    ShellModule,
+    // routes
     RouterModule.forRoot([
       {
         path: 'overview',
@@ -55,8 +60,10 @@ import { AppComponent } from './app.component';
         pathMatch: 'full',
       },
     ]),
+    // firebase
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
+    // ngxs (with data modules implementing it)
     NgxsModule.forRoot([], {
       developmentMode: !environment.production,
     }),
@@ -69,8 +76,6 @@ import { AppComponent } from './app.component';
     DataRocketModule,
     DataUnitModule,
     DataThemeModule,
-    HttpClientModule,
-    ShellModule,
   ],
   providers: [
     { provide: DEBUG_MODE, useValue: !environment.production },
