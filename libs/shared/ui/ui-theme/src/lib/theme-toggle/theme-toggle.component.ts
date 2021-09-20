@@ -18,7 +18,7 @@ export class ThemeToggleComponent {
 
   @Input()
   public set selected(value: Theme | undefined) {
-    this._icon = (value === Theme.LIGHT ? Theme.DARK : Theme.LIGHT) + '_mode';
+    this._icon = `${value}_mode`;
     this._selected = value;
   }
   @Output()
