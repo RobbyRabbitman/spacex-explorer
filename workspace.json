@@ -1211,7 +1211,7 @@
             "tsConfig": "apps/web/rockets/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "apps/web/rockets/src/favicon.ico",
+              "apps/web/rockets/src/favicon.png",
               "apps/web/rockets/src/assets",
               {
                 "glob": "**/*",
