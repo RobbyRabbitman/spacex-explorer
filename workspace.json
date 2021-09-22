@@ -428,12 +428,6 @@
             "assets": ["libs/shared/assets/*.md"]
           }
         },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/shared/assets/**/*.ts"]
-          }
-        },
         "test": {
           "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared/assets"],
@@ -775,12 +769,6 @@
             "main": "libs/shared/stylesheets/src/index.ts",
             "tsConfig": "libs/shared/stylesheets/tsconfig.lib.json",
             "assets": ["libs/shared/stylesheets/*.md"]
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/shared/stylesheets/**/*.ts"]
           }
         },
         "test": {
@@ -1222,7 +1210,7 @@
             ],
             "styles": ["apps/web/rockets/src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/stylesheets"]
+              "includePaths": ["libs/shared/stylesheets/src/lib"]
             },
             "scripts": []
           },

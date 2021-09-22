@@ -26,28 +26,30 @@
       "tags": ["scope:shared", "type:data"]
     },
     "rocket-ui-ui-rocket-card": {
-      "tags": ["scope:rocket", "type:ui"]
+      "tags": ["scope:shared", "type:ui"]
     },
     "rocket-ui-ui-rocket-engine-card": {
-      "tags": ["scope:rocket", "type:ui"]
+      "tags": ["scope:shared", "type:ui"]
     },
     "rocket-ui-ui-rocket-payloads-weight-card": {
-      "tags": ["scope:rocket", "type:ui"]
+      "tags": ["scope:shared", "type:ui"]
     },
     "rocket-ui-ui-rocket-payloads-weight-table": {
-      "tags": ["scope:rocket", "type:ui"]
+      "tags": ["scope:shared", "type:ui"]
     },
     "rocket-ui-ui-rocket-stage-card": {
-      "tags": ["scope:rocket", "type:ui"]
+      "tags": ["scope:shared", "type:ui"]
     },
     "rocket-ui-ui-rocket-stages-table": {
-      "tags": ["scope:rocket", "type:ui"]
+      "tags": ["scope:shared", "type:ui"]
     },
     "rockets-features-lazy-rocket-detail": {
-      "tags": ["scope:rockets", "type:feature-lazy"]
+      "tags": ["scope:shared", "type:feature-lazy"],
+      "implicitDependencies": ["shared-stylesheets"]
     },
     "rockets-features-lazy-rockets-overview": {
-      "tags": ["scope:rockets", "type:feature-lazy"]
+      "tags": ["scope:shared", "type:feature-lazy"],
+      "implicitDependencies": ["shared-stylesheets"]
     },
     "shared-assets": {
       "tags": ["scope:shared", "type:assets"]
@@ -65,7 +67,8 @@
       "tags": ["scope:shared", "type:data"]
     },
     "shared-features-github": {
-      "tags": ["scope:shared", "type:feature-shared"]
+      "tags": ["scope:shared", "type:feature-shared"],
+      "implicitDependencies": ["shared-assets"]
     },
     "shared-features-select-unit": {
       "tags": ["scope:shared", "type:feature-shared"]
@@ -98,7 +101,8 @@
       "tags": ["scope:shared", "type:ui"]
     },
     "shared-ui-ui-unit": {
-      "tags": ["scope:shared", "type:ui"]
+      "tags": ["scope:shared", "type:ui"],
+      "implicitDependencies": ["shared-assets"]
     },
     "shared-util-util-data": {
       "tags": ["scope:shared", "type:util"]

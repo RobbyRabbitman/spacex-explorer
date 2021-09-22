@@ -13,8 +13,69 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:web",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:web"]
+              },
+              {
+                "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "type:feature-lazy",
+                "onlyDependOnLibsWithTags": [
+                  "type:data",
+                  "type:ui",
+                  "type:util",
+                  "type:types",
+                  "type:feature-shared",
+                  "type:feature-lazy",
+                  "type:feature-styles",
+                  "type:feature-assets"
+                ]
+              },
+              {
+                "sourceTag": "type:feature-shared",
+                "onlyDependOnLibsWithTags": [
+                  "type:data",
+                  "type:ui",
+                  "type:util",
+                  "type:types",
+                  "type:feature-shared",
+                  "type:feature-styles",
+                  "type:feature-assets"
+                ]
+              },
+              {
+                "sourceTag": "type:data",
+                "onlyDependOnLibsWithTags": [
+                  "type:data",
+                  "type:util",
+                  "type:types"
+                ]
+              },
+              {
+                "sourceTag": "type:ui",
+                "onlyDependOnLibsWithTags": [
+                  "type:ui",
+                  "type:util",
+                  "type:types"
+                ]
+              },
+              {
+                "sourceTag": "type:util",
+                "onlyDependOnLibsWithTags": ["type:util", "type:types"]
+              },
+              {
+                "sourceTag": "type:styles",
+                "onlyDependOnLibsWithTags": ["type:styles"]
+              },
+              {
+                "sourceTag": "type:assets",
+                "onlyDependOnLibsWithTags": ["type:assets"]
               }
             ]
           }
