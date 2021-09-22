@@ -28,6 +28,7 @@ import {
 } from '@spacex/shared/data/data-theme';
 import { UNIT$ } from '@spacex/shared/util/util-unit';
 import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,6 +39,10 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     // shell
     ShellModule,
+    // PWA
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
     // routes
     RouterModule.forRoot([
       {

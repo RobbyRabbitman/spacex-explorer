@@ -1213,6 +1213,7 @@
             "assets": [
               "apps/web/rockets/src/favicon.png",
               "apps/web/rockets/src/assets",
+              "apps/web/rockets/src/manifest.webmanifest",
               {
                 "glob": "**/*",
                 "input": "./libs/shared/assets/",
@@ -1245,7 +1246,9 @@
                   "with": "apps/web/rockets/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/web/rockets/ngsw-config.json"
             },
             "development": {
               "buildOptimizer": false,
