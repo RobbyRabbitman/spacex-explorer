@@ -15,7 +15,7 @@ interface ScrollPositionRestore {
 }
 
 @Component({
-  selector: 'spacex-ui-shell',
+  selector: 'spacex-shell',
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
 })

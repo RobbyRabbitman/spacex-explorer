@@ -1157,7 +1157,7 @@
       "projectType": "library",
       "root": "libs/shared/util/util-unit",
       "sourceRoot": "libs/shared/util/util-unit/src",
-      "prefix": "spacex",
+      "prefix": "spacex-util",
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
