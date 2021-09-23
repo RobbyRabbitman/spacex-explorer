@@ -39,4 +39,8 @@ export class RocketDetailComponent implements OnInit {
       )
     );
   }
+
+  public _createImageProperties(rocket: Rocket): Array<[string, string]> {
+    return rocket.flickr_images.map((image) => [image, rocket.name]);
+  }
 }

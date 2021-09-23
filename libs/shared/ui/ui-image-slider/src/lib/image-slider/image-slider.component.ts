@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ImageSliderComponent {
   @Input()
-  public images: Array<string> | undefined;
+  public images: Array<[string, string]> | undefined;
   @Input()
   public selected = 0;
   @Input()

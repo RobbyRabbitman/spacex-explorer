@@ -14,7 +14,13 @@
   </div>
   <div class="images">
     <ng-container *ngFor="let image of images; let i = index">
-      <img class="image" loading="lazy" [src]="image" *ngIf="selected === i" />
+      <img
+        class="image"
+        loading="lazy"
+        [src]="image[0]"
+        [alt]="image[1]"
+        *ngIf="selected === i"
+      />
     </ng-container>
   </div>
   <div class="icon-wrapper">

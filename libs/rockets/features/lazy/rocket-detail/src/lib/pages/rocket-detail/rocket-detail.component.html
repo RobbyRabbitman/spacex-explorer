@@ -3,7 +3,7 @@
   <section id="general">
     <p>{{ rocket.description }}</p>
     <p>
-      <spacex-ui-image-slider [images]="rocket.flickr_images">
+      <spacex-ui-image-slider [images]="_createImageProperties(rocket)">
       </spacex-ui-image-slider>
     </p>
     <p>
