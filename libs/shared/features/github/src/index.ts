@@ -1,1 +1,2 @@
-export * from './lib/shared-features-github.module';
+export * from './lib/github.module';
+export * from './lib/github-icon-link/github-icon-link.component';
