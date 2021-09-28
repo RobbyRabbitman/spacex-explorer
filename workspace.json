@@ -426,27 +426,7 @@
     "shared-assets": {
       "root": "libs/shared/assets",
       "sourceRoot": "libs/shared/assets/src",
-      "projectType": "library",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/shared/assets",
-            "main": "libs/shared/assets/src/index.ts",
-            "tsConfig": "libs/shared/assets/tsconfig.lib.json",
-            "assets": ["libs/shared/assets/*.md"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/assets"],
-          "options": {
-            "jestConfig": "libs/shared/assets/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
+      "projectType": "library"
     },
     "shared-data-data-common": {
       "root": "libs/shared/data/data-common",
@@ -777,27 +757,7 @@
     "shared-stylesheets": {
       "root": "libs/shared/stylesheets",
       "sourceRoot": "libs/shared/stylesheets/src",
-      "projectType": "library",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/shared/stylesheets",
-            "main": "libs/shared/stylesheets/src/index.ts",
-            "tsConfig": "libs/shared/stylesheets/tsconfig.lib.json",
-            "assets": ["libs/shared/stylesheets/*.md"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/stylesheets"],
-          "options": {
-            "jestConfig": "libs/shared/stylesheets/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
+      "projectType": "library"
     },
     "shared-types-common": {
       "root": "libs/shared/types/common",
