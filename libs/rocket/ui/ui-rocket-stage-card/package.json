@@ -1,5 +1,5 @@
 {
-  "name": "@spacex/rocket-ui-ui-rocket-stage-card",
+  "name": "@spacex/rocket/ui/ui-rocket-stage-card",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^12.0.5",

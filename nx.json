@@ -123,5 +123,13 @@
       "tags": [],
       "implicitDependencies": ["web-rockets"]
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

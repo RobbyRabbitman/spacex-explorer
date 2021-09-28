@@ -1,5 +1,5 @@
 {
-  "name": "@spacex/rockets-features-lazy-rockets-overview",
+  "name": "@spacex/rockets/features/lazy/rockets-overview",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^12.0.5",

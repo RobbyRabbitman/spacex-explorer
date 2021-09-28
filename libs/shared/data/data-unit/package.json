@@ -1,5 +1,5 @@
 {
-  "name": "@spacex/shared-data-data-unit",
+  "name": "@spacex/shared/data/data-unit",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^12.0.5",

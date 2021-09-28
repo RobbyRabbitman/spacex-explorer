@@ -1,5 +1,8 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
   projects: [
+    ...getJestProjects(),
     '<rootDir>/libs/shared/types/rocket',
     '<rootDir>/libs/shared/types/common',
     '<rootDir>/libs/shared/types/launch',

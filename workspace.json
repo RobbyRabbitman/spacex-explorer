@@ -38,7 +38,8 @@
               "libs/launch/data/data-launch/src/**/*.ts",
               "libs/launch/data/data-launch/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -79,7 +80,8 @@
               "libs/rocket/data/data-rocket/src/**/*.ts",
               "libs/rocket/data/data-rocket/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -120,7 +122,8 @@
               "libs/rocket/ui/ui-rocket-card/src/**/*.ts",
               "libs/rocket/ui/ui-rocket-card/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -161,7 +164,8 @@
               "libs/rocket/ui/ui-rocket-engine-card/src/**/*.ts",
               "libs/rocket/ui/ui-rocket-engine-card/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -202,7 +206,8 @@
               "libs/rocket/ui/ui-rocket-payloads-weight-card/src/**/*.ts",
               "libs/rocket/ui/ui-rocket-payloads-weight-card/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -245,7 +250,8 @@
               "libs/rocket/ui/ui-rocket-payloads-weight-table/src/**/*.ts",
               "libs/rocket/ui/ui-rocket-payloads-weight-table/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -286,7 +292,8 @@
               "libs/rocket/ui/ui-rocket-stage-card/src/**/*.ts",
               "libs/rocket/ui/ui-rocket-stage-card/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -327,7 +334,8 @@
               "libs/rocket/ui/ui-rocket-stages-table/src/**/*.ts",
               "libs/rocket/ui/ui-rocket-stages-table/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -368,7 +376,8 @@
               "libs/rockets/features/lazy/rocket-detail/src/**/*.ts",
               "libs/rockets/features/lazy/rocket-detail/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -409,7 +418,8 @@
               "libs/rockets/features/lazy/rockets-overview/src/**/*.ts",
               "libs/rockets/features/lazy/rockets-overview/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -457,7 +467,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/shared/data/data-common/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -506,7 +517,8 @@
               "libs/shared/data/data-route-history/src/**/*.ts",
               "libs/shared/data/data-route-history/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -547,7 +559,8 @@
               "libs/shared/data/data-theme/src/**/*.ts",
               "libs/shared/data/data-theme/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -588,7 +601,8 @@
               "libs/shared/data/data-unit/src/**/*.ts",
               "libs/shared/data/data-unit/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -629,7 +643,8 @@
               "libs/shared/features/github/src/**/*.ts",
               "libs/shared/features/github/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -670,7 +685,8 @@
               "libs/shared/features/select-unit/src/**/*.ts",
               "libs/shared/features/select-unit/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -711,7 +727,8 @@
               "libs/shared/features/shell/src/**/*.ts",
               "libs/shared/features/shell/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -752,7 +769,8 @@
               "libs/shared/features/theme/src/**/*.ts",
               "libs/shared/features/theme/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -800,7 +818,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/shared/types/common/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -831,7 +850,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/shared/types/launch/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -862,7 +882,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/shared/types/rocket/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -911,7 +932,8 @@
               "libs/shared/ui/ui-image-slider/src/**/*.ts",
               "libs/shared/ui/ui-image-slider/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -952,7 +974,8 @@
               "libs/shared/ui/ui-table-of-contents/src/**/*.ts",
               "libs/shared/ui/ui-table-of-contents/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -993,7 +1016,8 @@
               "libs/shared/ui/ui-theme/src/**/*.ts",
               "libs/shared/ui/ui-theme/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -1034,7 +1058,8 @@
               "libs/shared/ui/ui-unit/src/**/*.ts",
               "libs/shared/ui/ui-unit/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -1057,7 +1082,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/shared/util/util-data/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -1106,7 +1132,8 @@
               "libs/shared/util/util-intersection-observer/src/**/*.ts",
               "libs/shared/util/util-intersection-observer/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -1129,7 +1156,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/shared/util/util-ts/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -1178,7 +1206,8 @@
               "libs/shared/util/util-unit/src/**/*.ts",
               "libs/shared/util/util-unit/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -1274,7 +1303,8 @@
               "apps/web/rockets/src/**/*.ts",
               "apps/web/rockets/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -1308,7 +1338,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/web/rockets-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     }
