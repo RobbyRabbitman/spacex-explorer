@@ -10,12 +10,14 @@ import { SetUnit, UnitState } from '@spacex/shared/data/data-unit';
   styleUrls: ['./select-unit.component.scss'],
 })
 export class SelectUnitComponent implements OnInit {
-  private _unit$: Observable<Unit> | undefined;
-  public get unit$(): Observable<Unit> | undefined {
+  private _unit$!: Observable<Unit>;
+  private _units$!: Observable<Array<Unit>>;
+
+  public get unit$(): Observable<Unit> {
     return this._unit$;
   }
-  private _units$: Observable<Array<Unit>> | undefined;
-  public get units$(): Observable<Array<Unit>> | undefined {
+
+  public get units$(): Observable<Array<Unit>> {
     return this._units$;
   }
 
