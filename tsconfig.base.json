@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@spacex/shared/types-common": ["libs/shared/types-common/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
