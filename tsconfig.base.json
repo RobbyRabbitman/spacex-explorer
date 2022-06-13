@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@spacex/shared/data-common": ["libs/shared/data-common/src/index.ts"],
       "@spacex/shared/types-common": ["libs/shared/types-common/src/index.ts"]
     }
   },
