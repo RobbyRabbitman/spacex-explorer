@@ -1,0 +1,15 @@
+export type Resource =
+  | 'capsules'
+  | 'company'
+  | 'cores'
+  | 'crew'
+  | 'dragons'
+  | 'history'
+  | 'landpads'
+  | 'launches'
+  | 'launchpads'
+  | 'payloads'
+  | 'roadster'
+  | 'rockets'
+  | 'ships'
+  | 'starlink';
