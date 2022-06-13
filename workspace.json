@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "web-launch-timeline": "apps/web/launch-timeline",
+    "web-launch-timeline-e2e": "apps/web/launch-timeline-e2e"
+  }
 }
