@@ -1,1 +1,1 @@
-export * from './lib/shared-types-common';
+export * from './lib/Identifiable';
