@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
-import { createSelector, StateContext } from '@ngxs/store';
+import { createSelector, NgxsOnInit, StateContext } from '@ngxs/store';
 import { patch, updateItem } from '@ngxs/store/operators';
 import { Identifiable } from '@spacex/shared/types-common';
 import { map } from 'rxjs';
@@ -9,9 +9,9 @@ export interface SpacexStateModel<T extends Identifiable> {
   all: T[];
 }
 
-export abstract class SpacexState<T extends Identifiable> {
-  protected abstract readonly api: SpacexApi<T>;
-
+export abstract class SpacexState<T extends Identifiable>
+  implements NgxsOnInit
+{
   public static all<T extends Identifiable>(stateClass: Type<SpacexState<T>>) {
     return createSelector([stateClass], ({ all }: SpacexStateModel<T>) => all);
   }
@@ -23,6 +23,12 @@ export abstract class SpacexState<T extends Identifiable> {
     return createSelector([stateClass], ({ all }: SpacexStateModel<T>) =>
       all.find((x) => x.id === id)
     );
+  }
+
+  protected abstract readonly api: SpacexApi<T>;
+
+  public ngxsOnInit(ctx?: StateContext<SpacexStateModel<T>> | undefined) {
+    ctx?.patchState({ all: [] });
   }
 
   protected all(ctx: StateContext<SpacexStateModel<T>>) {
