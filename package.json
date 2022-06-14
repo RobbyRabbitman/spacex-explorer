@@ -58,6 +58,7 @@
     "@angular/platform-browser": "~14.0.0",
     "@angular/platform-browser-dynamic": "~14.0.0",
     "@angular/router": "~14.0.0",
+    "@ngxs/logger-plugin": "^3.7.4",
     "@ngxs/store": "^3.7.4",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
