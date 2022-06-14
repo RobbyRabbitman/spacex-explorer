@@ -1,7 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgxsModule } from '@ngxs/store';
+import { LaunchesState } from './state/launches.state';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [NgxsModule.forFeature([LaunchesState])],
 })
 export class DataLaunchesModule {}
