@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  spacexApi: 'https://api.spacexdata.com/v4',
 };
 
 /*
