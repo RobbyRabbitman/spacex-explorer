@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/launches/data-launches/src",
+  "prefix": "launches",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/launches/data-launches"],
+      "options": {
+        "project": "libs/launches/data-launches/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/launches/data-launches/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/launches/data-launches/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/launches/data-launches"],
+      "options": {
+        "jestConfig": "libs/launches/data-launches/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/launches/data-launches/**/*.ts",
+          "libs/launches/data-launches/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:shared", "type:data"]
+}
