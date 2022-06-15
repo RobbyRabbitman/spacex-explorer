@@ -18,6 +18,9 @@
       "@spacex/launches/data-launches": [
         "libs/launches/data-launches/src/index.ts"
       ],
+      "@spacex/launches/ui-launches": [
+        "libs/launches/ui-launches/src/index.ts"
+      ],
       "@spacex/shared/data-common": ["libs/shared/data-common/src/index.ts"],
       "@spacex/shared/types-common": ["libs/shared/types-common/src/index.ts"]
     }

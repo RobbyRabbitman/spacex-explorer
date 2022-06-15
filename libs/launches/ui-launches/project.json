@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/launches/ui-launches/src",
+  "prefix": "ui-launches",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/launches/ui-launches"],
+      "options": {
+        "project": "libs/launches/ui-launches/ng-package.json",
+        "tailwindConfig": "libs/launches/ui-launches/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/launches/ui-launches/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/launches/ui-launches/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/launches/ui-launches"],
+      "options": {
+        "jestConfig": "libs/launches/ui-launches/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/launches/ui-launches/**/*.ts",
+          "libs/launches/ui-launches/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:shared", "type:ui"]
+}

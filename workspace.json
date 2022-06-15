@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "launches-data-launches": "libs/launches/data-launches",
+    "launches-ui-launches": "libs/launches/ui-launches",
     "shared-data-common": "libs/shared/data-common",
     "shared-types-common": "libs/shared/types-common",
     "web-launch-timeline": "apps/web/launch-timeline",
