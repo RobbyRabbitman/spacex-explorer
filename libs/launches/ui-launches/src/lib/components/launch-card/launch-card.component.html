@@ -1,0 +1,24 @@
+<mat-card *ngIf="launch">
+  <mat-card-header>
+    <img
+      mat-card-avatar
+      [attr.loading]="imageLoading"
+      [src]="launch.links.patch.small"
+      [alt]="'Patch of launch ' + launch.name"
+    />
+    <mat-card-title>{{ launch.name }}</mat-card-title>
+    <mat-card-subtitle>{{ launch.date_utc | date }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [attr.loading]="imageLoading"
+    [src]="launch.links.flickr.original[0]"
+    [alt]="'Image of launch ' + launch.name"
+  />
+  <mat-card-content>
+    <p>{{ launch.details }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-content></ng-content>
+  </mat-card-actions>
+</mat-card>
