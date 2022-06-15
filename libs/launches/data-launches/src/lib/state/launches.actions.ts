@@ -8,3 +8,7 @@ export class LaunchesOne implements Identifiable {
   public static readonly type = '[Launches] One';
   public constructor(public readonly id: UUID) {}
 }
+
+export class LaunchesLatest {
+  public static readonly type = '[Launches] Latest';
+}
