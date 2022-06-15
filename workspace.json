@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "launch-timeline-feature-lazy-launch-timeline": "libs/launch-timeline/feature-lazy-launch-timeline",
     "launches-data-launches": "libs/launches/data-launches",
     "launches-ui-launches": "libs/launches/ui-launches",
     "shared-data-common": "libs/shared/data-common",

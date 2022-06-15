@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@spacex/launch-timeline/feature-lazy-launch-timeline": [
+        "libs/launch-timeline/feature-lazy-launch-timeline/src/index.ts"
+      ],
       "@spacex/launches/data-launches": [
         "libs/launches/data-launches/src/index.ts"
       ],
