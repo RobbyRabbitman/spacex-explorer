@@ -17,7 +17,21 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(
+      [
+        {
+          path: '',
+          loadChildren: () =>
+            import('@spacex/launch-timeline/feature-lazy-launch-timeline').then(
+              (i) => i.FeatureLazyLaunchTimelineModule
+            ),
+        },
+        { path: '**', pathMatch: 'full', redirectTo: '' },
+      ],
+      {
+        initialNavigation: 'enabledBlocking',
+      }
+    ),
     NgxsModule.forRoot(undefined, { developmentMode: !environment.production }),
     NgxsLoggerPluginModule.forRoot({
       disabled: environment.production,
