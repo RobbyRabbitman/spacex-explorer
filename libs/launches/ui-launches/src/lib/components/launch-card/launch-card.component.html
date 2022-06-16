@@ -3,7 +3,9 @@
     <img
       mat-card-avatar
       [attr.loading]="imageLoading"
-      [src]="launch.links.patch.small"
+      [src]="
+        launch.links.patch.small ?? (dummyImage ? dummyImageSrc : undefined)
+      "
       [alt]="'Patch of launch ' + launch.name"
     />
     <mat-card-title>{{ launch.name }}</mat-card-title>
@@ -12,10 +14,20 @@
   <img
     mat-card-image
     [attr.loading]="imageLoading"
-    [src]="launch.links.flickr.original[0]"
+    [src]="
+      launch.links.flickr.original[0]
+        ? launch.links.flickr.original[0]
+        : dummyImage
+        ? dummyImageSrc
+        : undefined
+    "
     [alt]="'Image of launch ' + launch.name"
   />
   <mat-card-content>
+    <p *ngIf="launch.links.patch.small === null && dummyImage">No patch yet</p>
+    <p *ngIf="launch.links.flickr.original.length === 0 && dummyImage">
+      No image yet
+    </p>
     <p>{{ launch.details }}</p>
   </mat-card-content>
   <mat-card-actions>
