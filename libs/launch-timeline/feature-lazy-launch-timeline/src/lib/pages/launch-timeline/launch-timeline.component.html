@@ -1,7 +1,19 @@
-<ui-launches-launch-card
-  class="max-w-lg"
-  [launch]="launch"
-  launchTimelineScrollInit
-  *ngFor="let launch of launches$ | async"
->
-</ui-launches-launch-card>
+<section class="flex flex-col gap-4">
+  <ui-launches-launch-card
+    class="max-w-lg"
+    [launch]="launch"
+    launchTimelineScrollInit
+    *ngFor="let launch of launches$ | async"
+  >
+  </ui-launches-launch-card>
+</section>
+<nav>
+  <mat-nav-list class="sticky top-0 z-10">
+    <mat-list-item
+      *ngFor="let year of years$ | async"
+      (click)="scrollToYear(year)"
+    >
+      {{ year }}
+    </mat-list-item>
+  </mat-nav-list>
+</nav>
