@@ -1,5 +1,6 @@
-<section class="flex flex-col gap-4">
+<section id="launches" class="flex flex-col gap-4">
   <ui-launches-launch-card
+    [id]="launch.id"
     class="max-w-lg"
     [launch]="launch"
     launchTimelineScrollInit
@@ -8,10 +9,12 @@
   </ui-launches-launch-card>
 </section>
 <nav>
-  <mat-nav-list class="sticky top-0 z-10">
+  <mat-nav-list class="sticky top-4 z-10 !pt-0">
     <mat-list-item
       *ngFor="let year of years$ | async"
       (click)="scrollToYear(year)"
+      class="border-0 border-l-4 border-solid"
+      [class]="(activeYear$ | async) === year ? 'active-nav-item' : 'nav-item'"
     >
       {{ year }}
     </mat-list-item>
