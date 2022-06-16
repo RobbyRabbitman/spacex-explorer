@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   inject,
   InjectionToken,
   Input,
@@ -27,4 +28,5 @@ export class LaunchCardComponent {
   public dummyImage = true;
   @Input()
   public dummyImageSrc = inject(LAUNCH_CARD_DUMMY_IMAGE_SRC);
+  public constructor(public readonly elementRef: ElementRef<HTMLElement>) {}
 }
