@@ -42,8 +42,8 @@ export interface LaunchCore {
 
 export interface LaunchLinks {
   patch: {
-    small: string;
-    large: string;
+    small: string | null;
+    large: string | null;
   };
   reddit: {
     campaign: string;
