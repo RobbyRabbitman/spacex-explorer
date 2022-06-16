@@ -15,7 +15,12 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/web/launch-timeline/src/favicon.ico",
-          "apps/web/launch-timeline/src/assets"
+          "apps/web/launch-timeline/src/assets",
+          {
+            "input": "libs/launches/ui-launches/src/assets",
+            "glob": "**/*",
+            "output": "assets/launches"
+          }
         ],
         "styles": ["apps/web/launch-timeline/src/styles.scss"],
         "scripts": []
