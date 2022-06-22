@@ -8,6 +8,25 @@
   $foreground-palette: map.get($color-config, foreground);
 
   launch-timeline {
+    .active-nav-item-header {
+      color: mat.get-color-from-palette(
+        $primary-palette,
+        default-contrast
+      ) !important;
+      background: mat.get-color-from-palette($primary-palette, 600) !important;
+      border-color: mat.get-color-from-palette($primary-palette, 600);
+    }
+    .nav-item-header {
+      color: mat.get-color-from-palette(
+        $foreground-palette,
+        secondary-text
+      ) !important;
+      border-color: mat.get-color-from-palette($foreground-palette, divider);
+      &:hover {
+        color: mat.get-color-from-palette($primary-palette, 300) !important;
+        border-color: mat.get-color-from-palette($primary-palette, 300);
+      }
+    }
     .active-nav-item {
       color: mat.get-color-from-palette($primary-palette, 600) !important;
       border-color: mat.get-color-from-palette($primary-palette, 600);

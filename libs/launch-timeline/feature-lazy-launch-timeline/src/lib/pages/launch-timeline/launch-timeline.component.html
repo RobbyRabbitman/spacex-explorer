@@ -9,14 +9,42 @@
   </ui-launches-launch-card>
 </section>
 <nav>
-  <mat-nav-list class="sticky top-4 z-10 !pt-0">
-    <mat-list-item
-      *ngFor="let year of years$ | async"
-      (click)="scrollToYear(year)"
-      class="border-0 border-l-4 border-solid"
-      [class]="(activeYear$ | async) === year ? 'active-nav-item' : 'nav-item'"
-    >
-      {{ year }}
-    </mat-list-item>
-  </mat-nav-list>
+  <div class="sticky top-4 z-10 flex">
+    <mat-accordion>
+      <mat-expansion-panel
+        class="!m-0 !shadow-none [&_.mat-expansion-panel-body]:p-0"
+        *ngFor="let entry of nav$ | async | keyvalue: _navSort"
+        #panel
+        [expanded]="(activeYear$ | async) === entry.key"
+        [hideToggle]="true"
+      >
+        <mat-expansion-panel-header
+          class="border-0 border-l-4 border-solid"
+          [class]="
+            (activeYear$ | async) === entry.key
+              ? 'active-nav-item-header'
+              : 'nav-item-header'
+          "
+          (click)="scrollToYear(entry.key)"
+        >
+          {{ entry.key }}
+        </mat-expansion-panel-header>
+        <mat-nav-list class="!pt-0">
+          <mat-list-item
+            *ngFor="let item of entry.value"
+            (click)="scrollToYear(entry.key, item)"
+            class="!px-6 border-0 border-l-4 border-solid"
+            [class]="
+              (activeMonth$ | async) === item &&
+              (activeYear$ | async) === entry.key
+                ? 'active-nav-item'
+                : 'nav-item'
+            "
+          >
+            {{ item | month }}
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </nav>

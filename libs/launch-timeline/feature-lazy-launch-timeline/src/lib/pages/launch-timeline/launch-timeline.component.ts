@@ -7,7 +7,7 @@ import {
 } from '@spacex/launches/data-launches';
 import { LaunchCardComponent } from '@spacex/launches/ui-launches';
 import { SpacexState } from '@spacex/shared/data-common';
-import { map, mergeMapTo, shareReplay, Subject } from 'rxjs';
+import { BehaviorSubject, map, mergeMapTo, shareReplay } from 'rxjs';
 
 @Component({
   selector: 'launch-timeline',
@@ -25,18 +25,19 @@ export class LaunchTimelineComponent {
 
     if (this._launchCards) {
       const io = new IntersectionObserver(
-        (entries) =>
-          this.activeYear$.next(
-            new Date(
-              this.launchCards?.find(
-                (card) =>
-                  card.launch?.id ===
-                  entries.sort(
-                    (a, b) => b.intersectionRatio - a.intersectionRatio
-                  )[0].target.id
-              )?.launch?.date_utc as unknown as number
-            )?.getUTCFullYear()
-          ),
+        (entries) => {
+          const date = new Date(
+            this.launchCards?.find(
+              (card) =>
+                card.launch?.id ===
+                entries.sort(
+                  (a, b) => b.intersectionRatio - a.intersectionRatio
+                )[0].target.id
+            )?.launch?.date_utc as unknown as string
+          );
+          this.activeYear$.next(date.getUTCFullYear());
+          this.activeMonth$.next(date.getUTCMonth());
+        },
         { threshold: 1.0 }
       );
 
@@ -46,7 +47,8 @@ export class LaunchTimelineComponent {
     }
   }
 
-  public activeYear$ = new Subject<number>();
+  public activeYear$ = new BehaviorSubject<number | undefined>(undefined);
+  public activeMonth$ = new BehaviorSubject<number | undefined>(undefined);
 
   public readonly launches$ = this.store
     .dispatch([LaunchesAll, LaunchesLatest])
@@ -58,25 +60,39 @@ export class LaunchTimelineComponent {
       shareReplay(1)
     );
 
-  public years$ = this.launches$.pipe(
-    map(
-      (launches) =>
-        new Set(launches.map((l) => new Date(l.date_utc).getUTCFullYear()))
+  public readonly nav$ = this.launches$.pipe(
+    map((launches) =>
+      launches
+        .map((launch) => new Date(launch.date_utc))
+        .reduce(
+          (map, date) =>
+            map.set(
+              date.getUTCFullYear(),
+              (map.get(date.getUTCFullYear()) ?? new Set<number>()).add(
+                date.getUTCMonth()
+              )
+            ),
+          new Map<number, Set<number>>()
+        )
     ),
     shareReplay(1)
   );
+
+  public _navSort = (a: unknown, b: unknown): number => 0;
 
   public constructor(
     protected readonly store: Store,
     public readonly elementRef: ElementRef<HTMLElement>
   ) {}
 
-  public scrollToYear(year: number) {
+  public scrollToYear(year: number, month?: number) {
     this.launchCards
       ?.find(
         (card) =>
           !!card.launch &&
-          new Date(card.launch.date_utc).getUTCFullYear() === year
+          new Date(card.launch.date_utc).getUTCFullYear() === year &&
+          (month == null ||
+            new Date(card.launch.date_utc).getUTCMonth() === month)
       )
       ?.elementRef.nativeElement.scrollIntoView();
   }
