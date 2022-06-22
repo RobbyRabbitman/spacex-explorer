@@ -25,7 +25,8 @@
         "libs/launches/ui-launches/src/index.ts"
       ],
       "@spacex/shared/data-common": ["libs/shared/data-common/src/index.ts"],
-      "@spacex/shared/types-common": ["libs/shared/types-common/src/index.ts"]
+      "@spacex/shared/types-common": ["libs/shared/types-common/src/index.ts"],
+      "@spacex/shared/ui-common": ["libs/shared/ui-common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

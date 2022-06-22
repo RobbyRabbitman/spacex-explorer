@@ -7,6 +7,7 @@
     "launches-ui-launches": "libs/launches/ui-launches",
     "shared-data-common": "libs/shared/data-common",
     "shared-types-common": "libs/shared/types-common",
+    "shared-ui-common": "libs/shared/ui-common",
     "web-launch-timeline": "apps/web/launch-timeline",
     "web-launch-timeline-e2e": "apps/web/launch-timeline-e2e"
   }
