@@ -1,4 +1,11 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { Store } from '@ngxs/store';
 import {
   LaunchesAll,
@@ -7,14 +14,26 @@ import {
 } from '@spacex/launches/data-launches';
 import { LaunchCardComponent } from '@spacex/launches/ui-launches';
 import { SpacexState } from '@spacex/shared/data-common';
-import { BehaviorSubject, map, mergeMapTo, shareReplay } from 'rxjs';
+import {
+  BehaviorSubject,
+  debounceTime,
+  defer,
+  finalize,
+  map,
+  mergeMapTo,
+  shareReplay,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 
 @Component({
   selector: 'launch-timeline',
   templateUrl: './launch-timeline.component.html',
   styleUrls: ['./launch-timeline.component.scss'],
 })
-export class LaunchTimelineComponent {
+export class LaunchTimelineComponent implements OnInit, OnDestroy {
+  protected readonly destroy$ = new Subject<void>();
+
   private _launchCards?: QueryList<LaunchCardComponent> | undefined;
   public get launchCards(): QueryList<LaunchCardComponent> | undefined {
     return this._launchCards;
@@ -47,8 +66,12 @@ export class LaunchTimelineComponent {
     }
   }
 
-  public activeYear$ = new BehaviorSubject<number | undefined>(undefined);
-  public activeMonth$ = new BehaviorSubject<number | undefined>(undefined);
+  public readonly activeYear$ = new BehaviorSubject<number | undefined>(
+    undefined
+  );
+  public readonly activeMonth$ = new BehaviorSubject<number | undefined>(
+    undefined
+  );
 
   public readonly launches$ = this.store
     .dispatch([LaunchesAll, LaunchesLatest])
@@ -78,14 +101,42 @@ export class LaunchTimelineComponent {
     shareReplay(1)
   );
 
-  public _navSort = (a: unknown, b: unknown): number => 0;
+  public readonly _navSort = (a: unknown, b: unknown): number => 0;
 
   public constructor(
     protected readonly store: Store,
     public readonly elementRef: ElementRef<HTMLElement>
   ) {}
 
-  public scrollToYear(year: number, month?: number) {
+  public ngOnInit(): void {
+    defer(() => {
+      const o = new ResizeObserver(([entry]) =>
+        s.next(entry.contentRect.height)
+      );
+      o.observe(this.elementRef.nativeElement);
+      const s = new Subject<number>();
+      return s.pipe(
+        debounceTime(50),
+        shareReplay(1),
+        finalize(() => o.unobserve(this.elementRef.nativeElement))
+      );
+    })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (heigth) => {
+          const nav =
+            this.elementRef.nativeElement.querySelector<HTMLElement>('div>nav');
+          if (nav != null) nav.style.height = `${heigth}px`;
+        },
+      });
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  public scrollToLaunch(year: number, month?: number) {
     this.launchCards
       ?.find(
         (card) =>

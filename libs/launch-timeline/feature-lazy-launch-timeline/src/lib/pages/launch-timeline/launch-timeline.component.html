@@ -1,3 +1,4 @@
+<div>&nbsp;</div>
 <section id="launches" class="flex flex-col gap-4">
   <ui-launches-launch-card
     [id]="launch.id"
@@ -8,8 +9,8 @@
   >
   </ui-launches-launch-card>
 </section>
-<nav>
-  <div class="sticky top-4 z-10 flex">
+<div class="flex">
+  <nav class="sticky top-4 bottom-4 z-10 overflow-x-auto">
     <mat-accordion>
       <mat-expansion-panel
         class="!m-0 !shadow-none [&_.mat-expansion-panel-body]:p-0"
@@ -25,14 +26,14 @@
               ? 'active-nav-item-header'
               : 'nav-item-header'
           "
-          (click)="scrollToYear(entry.key)"
+          (click)="scrollToLaunch(entry.key)"
         >
           {{ entry.key }}
         </mat-expansion-panel-header>
         <mat-nav-list class="!pt-0">
           <mat-list-item
             *ngFor="let item of entry.value"
-            (click)="scrollToYear(entry.key, item)"
+            (click)="scrollToLaunch(entry.key, item)"
             class="!px-6 border-0 border-l-4 border-solid"
             [class]="
               (activeMonth$ | async) === item &&
@@ -46,5 +47,5 @@
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
-  </div>
-</nav>
+  </nav>
+</div>
