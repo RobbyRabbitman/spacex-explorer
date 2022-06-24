@@ -11,18 +11,28 @@
     <mat-card-title>{{ launch.name }}</mat-card-title>
     <mat-card-subtitle>{{ launch.date_utc | date }}</mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    [attr.loading]="imageLoading"
-    [src]="
-      launch.links.flickr.original[0]
-        ? launch.links.flickr.original[0]
-        : dummyImage
-        ? dummyImageSrc
-        : undefined
-    "
-    [alt]="'Image of launch ' + launch.name"
-  />
+  <div class="relative" mat-card-image>
+    <img
+      #launchImg="uiSpacexImageLoaded"
+      uiSpacexImageLoaded
+      class="object-contain h-96"
+      [attr.loading]="imageLoading"
+      [src]="
+        launch.links.flickr.original[0]
+          ? launch.links.flickr.original[0]
+          : dummyImage
+          ? dummyImageSrc
+          : undefined
+      "
+      [alt]="'Image of launch ' + launch.name"
+    />
+    <mat-spinner
+      *ngIf="!launchImg.complete"
+      class="!absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
+    </mat-spinner>
+  </div>
+
   <mat-card-content>
     <p *ngIf="launch.links.patch.small === null && dummyImage">No patch yet</p>
     <p *ngIf="launch.links.flickr.original.length === 0 && dummyImage">
