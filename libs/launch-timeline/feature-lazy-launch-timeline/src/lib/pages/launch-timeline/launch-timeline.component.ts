@@ -11,6 +11,7 @@ import {
   LaunchesAll,
   LaunchesLatest,
   LaunchesState,
+  LAUNCHES_STATE,
 } from '@spacex/launches/data-launches';
 import { LaunchCardComponent } from '@spacex/launches/ui-launches';
 import { SpacexState } from '@spacex/shared/data-common';
@@ -38,40 +39,66 @@ export class LaunchTimelineComponent implements OnInit, OnDestroy {
   public get launchCards(): QueryList<LaunchCardComponent> | undefined {
     return this._launchCards;
   }
+
   @ViewChildren(LaunchCardComponent)
   public set launchCards(value: QueryList<LaunchCardComponent> | undefined) {
-    this._launchCards = value;
+    const observe = (() => {
+      let observer: IntersectionObserver;
+      return () => {
+        if (value && value.length > 0) {
+          if (observer == null) {
+            value
+              .find(
+                (card) =>
+                  card.launch?.id ===
+                  this.store.selectSnapshot(LAUNCHES_STATE).latest?.id
+              )
+              ?.elementRef.nativeElement.scrollIntoView();
+            // store elements visibility
+            const cards = value.reduce(
+              (map, c) =>
+                map.set(c.launch?.id ?? '', { visible: false, card: c }),
+              new Map<string, { visible: boolean; card: LaunchCardComponent }>()
+            );
+            observer = new IntersectionObserver(
+              (entries) => {
+                for (const e of entries) {
+                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                  cards.get(e.target.id)!.visible = e.isIntersecting;
+                }
 
-    if (this._launchCards) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          const date = new Date(
-            this.launchCards?.find(
-              (card) =>
-                card.launch?.id ===
-                entries.sort(
-                  (a, b) => b.intersectionRatio - a.intersectionRatio
-                )[0].target.id
-            )?.launch?.date_utc as unknown as string
-          );
-          this.activeYear$.next(date.getUTCFullYear());
-          this.activeMonth$.next(date.getUTCMonth());
-        },
-        { threshold: 1.0 }
-      );
+                const active = [...cards].filter(
+                  ([id, { visible, card }]) => visible
+                )[0];
+                if (active != null) {
+                  const activeDate = new Date(
+                    active[1].card.launch?.date_utc as unknown as string
+                  );
 
-      for (const card of this._launchCards) {
-        io.observe(card.elementRef.nativeElement);
-      }
-    }
+                  this.activeYear$.next(activeDate.getUTCFullYear());
+                  this.activeMonth$.next(activeDate.getUTCMonth());
+                }
+              },
+              { threshold: 1.0 }
+            );
+          }
+          if (this._launchCards != null)
+            for (const card of this._launchCards) {
+              observer.unobserve(card.elementRef.nativeElement);
+            }
+          this._launchCards = value;
+
+          for (const card of value) {
+            observer.observe(card.elementRef.nativeElement);
+          }
+        }
+      };
+    })();
+    observe();
   }
 
-  public readonly activeYear$ = new BehaviorSubject<number | undefined>(
-    undefined
-  );
-  public readonly activeMonth$ = new BehaviorSubject<number | undefined>(
-    undefined
-  );
+  public activeYear$ = new BehaviorSubject<number | undefined>(undefined);
+  public activeMonth$ = new BehaviorSubject<number | undefined>(undefined);
 
   public readonly launches$ = this.store
     .dispatch([LaunchesAll, LaunchesLatest])

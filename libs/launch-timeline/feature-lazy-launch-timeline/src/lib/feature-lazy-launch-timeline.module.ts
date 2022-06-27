@@ -7,7 +7,6 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { UiLaunchesModule } from '@spacex/launches/ui-launches';
 import { UiCommonModule } from '@spacex/shared/ui-common';
-import { LaunchTimelineScrollInitDirective } from './directives/launch-timeline-scroll-init.directive';
 import { LaunchTimelineComponent } from './pages/launch-timeline/launch-timeline.component';
 
 @NgModule({
@@ -24,6 +23,6 @@ import { LaunchTimelineComponent } from './pages/launch-timeline/launch-timeline
     UiLaunchesModule,
     UiCommonModule,
   ],
-  declarations: [LaunchTimelineComponent, LaunchTimelineScrollInitDirective],
+  declarations: [LaunchTimelineComponent],
 })
 export class FeatureLazyLaunchTimelineModule {}
