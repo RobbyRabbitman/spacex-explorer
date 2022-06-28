@@ -1,15 +1,15 @@
-<div>&nbsp;</div>
-<section id="launches" class="flex flex-col gap-4">
+<div *ngIf="(sm$ | async) === false">&nbsp;</div>
+<section id="launches" class="flex flex-col gap-4 p-4 sm:p-0">
   <ui-launches-launch-card
     [id]="launch.id"
-    class="max-w-lg"
+    class="sm:max-w-lg"
     [launch]="launch"
     *ngFor="let launch of launches$ | async"
   >
   </ui-launches-launch-card>
 </section>
-<div class="flex">
-  <nav class="sticky top-4 bottom-4 z-10 overflow-x-auto">
+<div *ngIf="(sm$ | async) === false" class="flex">
+  <nav class="sticky top-4 bottom-4 z-10 overflow-x-auto flex">
     <mat-accordion>
       <mat-expansion-panel
         class="!m-0 !shadow-none [&_.mat-expansion-panel-body]:p-0"
@@ -48,3 +48,37 @@
     </mat-accordion>
   </nav>
 </div>
+<mat-toolbar
+  *ngIf="(sm$ | async) === true"
+  color="primary"
+  class="sticky bottom-0 h-min !px-4 !pt-4 gap-4"
+>
+  <mat-form-field class="w-20">
+    <mat-label>Year</mat-label>
+    <mat-select
+      (selectionChange)="scrollToLaunch($event.value)"
+      [value]="activeYear$ | async"
+    >
+      <mat-option
+        *ngFor="let entry of nav$ | async | keyvalue: _navSort"
+        [value]="entry.key"
+      >
+        {{ entry.key }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="activeYear$ | async as activeYear">
+    <mat-label>Month</mat-label>
+    <mat-select
+      (selectionChange)="scrollToLaunch(activeYear, $event.value)"
+      [value]="activeMonth$ | async"
+    >
+      <mat-option
+        *ngFor="let month of (nav$ | async)?.get(activeYear)"
+        [value]="month"
+      >
+        {{ month | month }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-toolbar>

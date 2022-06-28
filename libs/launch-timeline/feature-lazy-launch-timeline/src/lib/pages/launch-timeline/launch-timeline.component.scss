@@ -1,4 +1,6 @@
-:host {
-  @apply h-full box-border grid gap-4 p-4;
-  grid-template-columns: 1fr minmax(0, 32rem) 1fr;
+@screen sm {
+  :host {
+    @apply h-full box-border grid gap-4 p-4;
+    grid-template-columns: 1fr minmax(0, 32rem) 1fr;
+  }
 }

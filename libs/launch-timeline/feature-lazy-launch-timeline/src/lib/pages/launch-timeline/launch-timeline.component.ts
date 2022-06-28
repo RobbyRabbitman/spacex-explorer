@@ -1,6 +1,8 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {
   Component,
   ElementRef,
+  inject,
   OnDestroy,
   OnInit,
   QueryList,
@@ -33,7 +35,15 @@ import {
   styleUrls: ['./launch-timeline.component.scss'],
 })
 export class LaunchTimelineComponent implements OnInit, OnDestroy {
+  public readonly sm$ = inject(BreakpointObserver)
+    .observe([Breakpoints.Handset])
+    .pipe(
+      map((state) => state.matches),
+      shareReplay(1)
+    );
+
   protected readonly destroy$ = new Subject<void>();
+  protected observer?: IntersectionObserver;
 
   private _launchCards?: QueryList<LaunchCardComponent> | undefined;
   public get launchCards(): QueryList<LaunchCardComponent> | undefined {
@@ -42,59 +52,52 @@ export class LaunchTimelineComponent implements OnInit, OnDestroy {
 
   @ViewChildren(LaunchCardComponent)
   public set launchCards(value: QueryList<LaunchCardComponent> | undefined) {
-    const observe = (() => {
-      let observer: IntersectionObserver;
-      return () => {
-        if (value && value.length > 0) {
-          if (observer == null) {
-            value
-              .find(
-                (card) =>
-                  card.launch?.id ===
-                  this.store.selectSnapshot(LAUNCHES_STATE).latest?.id
-              )
-              ?.elementRef.nativeElement.scrollIntoView();
-            // store elements visibility
-            const cards = value.reduce(
-              (map, c) =>
-                map.set(c.launch?.id ?? '', { visible: false, card: c }),
-              new Map<string, { visible: boolean; card: LaunchCardComponent }>()
-            );
-            observer = new IntersectionObserver(
-              (entries) => {
-                for (const e of entries) {
-                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                  cards.get(e.target.id)!.visible = e.isIntersecting;
-                }
-
-                const active = [...cards].filter(
-                  ([id, { visible, card }]) => visible
-                )[0];
-                if (active != null) {
-                  const activeDate = new Date(
-                    active[1].card.launch?.date_utc as unknown as string
-                  );
-
-                  this.activeYear$.next(activeDate.getUTCFullYear());
-                  this.activeMonth$.next(activeDate.getUTCMonth());
-                }
-              },
-              { threshold: 1.0 }
-            );
-          }
-          if (this._launchCards != null)
-            for (const card of this._launchCards) {
-              observer.unobserve(card.elementRef.nativeElement);
+    if (value && value.length > 0) {
+      if (this.observer == null) {
+        value
+          .find(
+            (card) =>
+              card.launch?.id ===
+              this.store.selectSnapshot(LAUNCHES_STATE).latest?.id
+          )
+          ?.elementRef.nativeElement.scrollIntoView();
+        // store elements visibility
+        const cards = value.reduce(
+          (map, c) => map.set(c.launch?.id ?? '', { visible: false, card: c }),
+          new Map<string, { visible: boolean; card: LaunchCardComponent }>()
+        );
+        this.observer = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              cards.get(e.target.id)!.visible = e.isIntersecting;
             }
-          this._launchCards = value;
 
-          for (const card of value) {
-            observer.observe(card.elementRef.nativeElement);
-          }
+            const active = [...cards].filter(
+              ([id, { visible, card }]) => visible
+            )[0];
+            if (active != null) {
+              const activeDate = new Date(
+                active[1].card.launch?.date_utc as unknown as string
+              );
+
+              this.activeYear$.next(activeDate.getUTCFullYear());
+              this.activeMonth$.next(activeDate.getUTCMonth());
+            }
+          },
+          { threshold: 1.0 }
+        );
+      }
+      if (this._launchCards != null)
+        for (const card of this._launchCards) {
+          this.observer.unobserve(card.elementRef.nativeElement);
         }
-      };
-    })();
-    observe();
+      this._launchCards = value;
+
+      for (const card of value) {
+        this.observer.observe(card.elementRef.nativeElement);
+      }
+    }
   }
 
   public activeYear$ = new BehaviorSubject<number | undefined>(undefined);
@@ -143,7 +146,7 @@ export class LaunchTimelineComponent implements OnInit, OnDestroy {
       o.observe(this.elementRef.nativeElement);
       const s = new Subject<number>();
       return s.pipe(
-        debounceTime(50),
+        debounceTime(300),
         shareReplay(1),
         finalize(() => o.unobserve(this.elementRef.nativeElement))
       );
